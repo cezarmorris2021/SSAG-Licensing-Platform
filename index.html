@@ -4,596 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SSAG Marketplace | Turnkey Business Systems</title>
-  <meta name="description" content="SSAG Marketplace – premium turnkey, ready-built business systems: e-commerce brands, local service companies, automation channels, and custom SSAG builds.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #020617;
-      --bg-alt: #02081b;
-      --panel: #020617;
-      --accent: #22c55e;
-      --accent-soft: rgba(34,197,94,0.16);
-      --accent-alt: #38bdf8;
-      --text-main: #e5e7eb;
-      --text-soft: #9ca3af;
-      --border: rgba(148,163,184,0.35);
-      --shadow-soft: 0 20px 40px rgba(15,23,42,0.9);
-      --max-width: 1080px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background:
-        radial-gradient(circle at top, #0b1120 0, #020617 52%, #000 100%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* NAV */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 25;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom,
-        rgba(2,6,23,0.98),
-        rgba(2,6,23,0.88),
-        transparent);
-      border-bottom: 1px solid rgba(15,23,42,0.95);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 0;
-      gap: 1rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
-      background:
-        radial-gradient(circle at 15% 0, #22c55e 0, #22c55e 22%, transparent 23%),
-        radial-gradient(circle at 80% 100%, #38bdf8 0, #38bdf8 26%, transparent 27%),
-        radial-gradient(circle at 50% 50%, #020617 0, #020617 65%);
-      box-shadow:
-        0 0 0 1px rgba(148,163,184,0.75),
-        0 0 30px rgba(56,189,248,0.6);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-logo::after {
-      content: "";
-      position: absolute;
-      inset: 26%;
-      border-radius: 999px;
-      border: 1px solid rgba(15,23,42,0.9);
-    }
-
-    .brand-main {
-      font-size: 1.05rem;
-      letter-spacing: 0.17em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .brand-sub {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-      font-size: 0.85rem;
-    }
-
-    .nav-link {
-      background: none;
-      border: none;
-      padding: 0.3rem 0.1rem;
-      cursor: pointer;
-      color: var(--text-soft);
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.08rem;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(to right, var(--accent), var(--accent-alt));
-      transition: width 140ms ease-out;
-    }
-
-    .nav-link:hover {
-      color: var(--text-main);
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 0.55rem 1.15rem;
-      font-size: 0.86rem;
-      font-weight: 500;
-      background: none;
-      color: inherit;
-      cursor: pointer;
-      gap: 0.35rem;
-      transition: all 130ms ease-out;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #22c55e, #4ade80);
-      color: #022c22;
-      box-shadow: 0 12px 28px rgba(34,197,94,0.5);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 34px rgba(34,197,94,0.6);
-    }
-
-    .btn-ghost {
-      border-color: rgba(148,163,184,0.75);
-      background: rgba(15,23,42,0.96);
-      color: var(--text-soft);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--text-main);
-    }
-
-    main {
-      flex: 1;
-    }
-
-    section {
-      padding: 2.7rem 0;
-    }
-
-    section + section {
-      border-top: 1px solid rgba(15,23,42,0.95);
-    }
-
-    /* HERO */
-    .hero {
-      padding-top: 3.1rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.1fr);
-      gap: 2.2rem;
-      align-items: center;
-    }
-
-    @media (min-width: 900px) {
-      .hero-grid {
-        grid-template-columns: minmax(0,1.2fr) minmax(0,0.9fr);
-      }
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.75);
-      padding: 0.25rem 0.8rem;
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      background: rgba(15,23,42,0.96);
-      margin-bottom: 1rem;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.22);
-    }
-
-    .hero-title {
-      margin: 0 0 0.7rem;
-      font-size: clamp(2.2rem, 3vw + 1.3rem, 3.1rem);
-      letter-spacing: -0.03em;
-      line-height: 1.04;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #22c55e, #22c55e, #38bdf8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      margin: 0 0 1.5rem;
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      max-width: 34rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .hero-meta-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .hero-meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.17em;
-      font-size: 0.7rem;
-      color: rgba(148,163,184,0.85);
-    }
-
-    .hero-meta-value {
-      font-weight: 500;
-    }
-
-    .hero-card {
-      border-radius: 18px;
-      background: radial-gradient(circle at top left,
-        rgba(56,189,248,0.12),
-        transparent 55%),
-        radial-gradient(circle at bottom right,
-        rgba(34,197,94,0.18),
-        transparent 55%),
-        var(--panel);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-      padding: 1.1rem 1rem;
-      font-size: 0.86rem;
-    }
-
-    .hero-card h3 {
-      margin: 0 0 0.4rem;
-      font-size: 0.95rem;
-    }
-
-    .hero-card p {
-      margin: 0 0 0.5rem;
-      color: var(--text-soft);
-    }
-
-    .hero-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0.35rem 0 0;
-      display: grid;
-      gap: 0.28rem;
-    }
-
-    .hero-card li::before {
-      content: "•";
-      margin-right: 0.35rem;
-      color: var(--accent);
-    }
-
-    /* SECTION HEADINGS */
-    .section-heading {
-      margin-bottom: 1.6rem;
-    }
-
-    .section-label {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.72rem;
-      color: rgba(148,163,184,0.9);
-      margin-bottom: 0.3rem;
-    }
-
-    .section-title {
-      margin: 0 0 0.35rem;
-      font-size: 1.4rem;
-      letter-spacing: -0.02em;
-    }
-
-    .section-text {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      max-width: 40rem;
-    }
-
-    /* MARKETPLACE GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr);
-      gap: 1rem;
-    }
-
-    @media (min-width: 860px) {
-      .grid {
-        grid-template-columns: repeat(3,minmax(0,1fr));
-      }
-    }
-
-    .card {
-      border-radius: 16px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      box-shadow: 0 14px 32px rgba(15,23,42,0.9);
-      padding: 0.9rem 0.9rem 1rem;
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.86rem;
-    }
-
-    .card-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(148,163,184,0.9);
-    }
-
-    .card-title {
-      font-size: 0.96rem;
-      font-weight: 600;
-    }
-
-    .card-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.1rem;
-    }
-
-    .card-tag {
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.75);
-      padding: 0.15rem 0.55rem;
-      font-size: 0.72rem;
-      color: rgba(209,213,219,0.96);
-      background: rgba(15,23,42,0.96);
-    }
-
-    .status-pill {
-      border-radius: 999px;
-      padding: 0.15rem 0.6rem;
-      font-size: 0.7rem;
-      border: 1px solid rgba(34,197,94,0.7);
-      background: var(--accent-soft);
-      color: #bbf7d0;
-    }
-
-    .card-body {
-      color: var(--text-soft);
-      margin: 0.3rem 0 0.5rem;
-    }
-
-    .card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 0.6rem;
-      display: grid;
-      gap: 0.25rem;
-    }
-
-    .card ul li::before {
-      content: "–";
-      margin-right: 0.3rem;
-      color: var(--accent);
-    }
-
-    .card button {
-      margin-top: auto;
-      align-self: flex-start;
-    }
-
-    /* HOW IT WORKS / WHY SSAG */
-    .three-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr);
-      gap: 1rem;
-    }
-
-    @media (min-width: 860px) {
-      .three-grid {
-        grid-template-columns: repeat(3,minmax(0,1fr));
-      }
-    }
-
-    .mini-card {
-      border-radius: 14px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      padding: 0.9rem 0.9rem 1rem;
-      font-size: 0.84rem;
-      display: grid;
-      gap: 0.3rem;
-    }
-
-    .mini-label {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(148,163,184,0.9);
-    }
-
-    .mini-title {
-      font-weight: 600;
-      font-size: 0.94rem;
-    }
-
-    .two-col {
-      display: grid;
-      gap: 1.6rem;
-    }
-
-    @media (min-width: 900px) {
-      .two-col {
-        grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
-      }
-    }
-
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 0.6rem 0 0;
-      display: grid;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .list-item {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-
-    .dot {
-      width: 0.48rem;
-      height: 0.48rem;
-      border-radius: 999px;
-      background: var(--accent);
-      margin-top: 0.22rem;
-    }
-
-    /* CONTACT */
-    .panel {
-      border-radius: 18px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      padding: 1rem 1rem 1.15rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.86rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr);
-      gap: 0.75rem;
-    }
-
-    .field {
-      display: grid;
-      gap: 0.22rem;
-    }
-
-    .field label {
-      font-size: 0.8rem;
-      color: rgba(209,213,219,0.94);
-    }
-
-    input, select, textarea {
-      width: 100%;
-      font-family: inherit;
-      font-size: 0.86rem;
-      border-radius: 10px;
-      border: 1px solid rgba(51,65,85,0.95);
-      background: rgba(15,23,42,0.97);
-      color: var(--text-main);
-      padding: 0.52rem 0.7rem;
-      outline: none;
-      transition: border-color 130ms ease-out, box-shadow 130ms ease-out;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(148,163,184,0.78);
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--accent);
-      box-shadow:
-        0 0 0 1px rgba(34,197,94,0.7),
-        0 0 0 6px rgba(34,197,94,0.2);
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid rgba(15,23,42,0.95);
-      padding: 1.5rem 0 2rem;
-      font-size: 0.76rem;
-      color: var(--text-soft);
-    }
-
-    .footer-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.7rem;
-      align-items: center;
-    }
-  </style>
+  <meta name="description" content="SSAG Marketplace – turnkey, ready-built business systems for real people: online brands, local service companies, channels and custom builds.">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="page">
     <!-- NAV -->
-    <header>
+    <header class="nav">
       <div class="shell nav-inner">
         <div class="brand">
           <div class="brand-logo" aria-hidden="true"></div>
@@ -605,7 +23,6 @@
         <nav class="nav-links">
           <button class="nav-link" data-scroll="#market">Marketplace</button>
           <button class="nav-link" data-scroll="#how">How it works</button>
-          <button class="nav-link" data-scroll="#why">Why SSAG</button>
           <button class="nav-link" data-scroll="#contact">Contact</button>
         </nav>
       </div>
@@ -625,34 +42,25 @@
               <span>done-for-you business systems.</span>
             </h1>
             <p class="hero-sub">
-              Browse realistic, cash-flow-focused business builds you can step into – from local services to online brands
-              and speciality operations. SSAG handles the systems; you own the business.
+              Browse realistic, cash-flow-focused business builds you can step into – from
+              local services to online brands. SSAG handles systems; you own the business.
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary" data-scroll="#market">Browse marketplace</button>
               <button class="btn btn-ghost" data-scroll="#contact">Request a custom build</button>
             </div>
-            <div class="hero-meta">
-              <div class="hero-meta-block">
-                <span class="hero-meta-label">Base</span>
-                <span class="hero-meta-value">Tucson, Arizona · Serving US</span>
-              </div>
-              <div class="hero-meta-block">
-                <span class="hero-meta-label">Model</span>
-                <span class="hero-meta-value">Design · build · documented handover</span>
-              </div>
-            </div>
           </div>
 
           <aside class="hero-card">
-            <h3>What a “turnkey build” means here</h3>
+            <h2>What “turnkey” means here</h2>
             <p>
-              You’re not buying hype or a random idea. Each build is a small system that can be explained in plain language.
+              You’re not buying hype or a random idea. Each build is a simple, explainable
+              system that shows how leads and money move.
             </p>
             <ul>
               <li>Clear offer, basic brand and online presence.</li>
-              <li>Simple pipeline showing where leads and money come from.</li>
-              <li>Owner notes so you know what daily work actually looks like.</li>
+              <li>Simple pipeline for leads, jobs and payments.</li>
+              <li>Owner notes in plain language.</li>
             </ul>
           </aside>
         </div>
@@ -662,94 +70,172 @@
       <section id="market">
         <div class="shell">
           <div class="section-heading">
-            <div class="section-label">Marketplace</div>
-            <h2 class="section-title">Example SSAG Marketplace listings.</h2>
+            <p class="section-label">Marketplace</p>
+            <h2 class="section-title">Example SSAG builds</h2>
             <p class="section-text">
-              These tiles represent the kinds of businesses SSAG can design and assemble. Exact pricing, assets and terms
-              are customized to your situation.
+              These tiles show the types of systems SSAG can design and assemble. Details and prices
+              are customized around your situation.
             </p>
           </div>
 
           <div class="grid">
-            <!-- Card 1 -->
             <article class="card">
-              <div class="card-label">Online brand</div>
-              <div class="card-title">Turnkey E-Commerce Micro-Brand</div>
-              <div class="card-tag-row">
-                <span class="card-tag">Physical products</span>
-                <span class="card-tag">Shopify / similar</span>
-                <span class="status-pill">Build-to-order</span>
-              </div>
+              <p class="card-label">Online brand</p>
+              <h3 class="card-title">E-Commerce Micro-Brand</h3>
               <p class="card-body">
-                Niche product brand with storefront, starter products and a simple launch plan that doesn’t rely on magic traffic.
+                Niche product brand with storefront, starter products and a launch outline that doesn’t rely on luck.
               </p>
               <ul>
-                <li>Brand name, logo, color system and basic style guide.</li>
-                <li>Store set up with 5–10 starter products and simple navigation.</li>
-                <li>Launch outline: where first eyeballs and buyers will come from.</li>
+                <li>Brand name, logo and color system.</li>
+                <li>Store with 5–10 starter products.</li>
+                <li>Basic email or message follow-up flow.</li>
               </ul>
               <button class="btn btn-ghost" data-scroll="#contact">Ask about e-commerce builds</button>
             </article>
 
-            <!-- Card 2 -->
             <article class="card">
-              <div class="card-label">Local service</div>
-              <div class="card-title">Moving / Hauling / Home Service System</div>
-              <div class="card-tag-row">
-                <span class="card-tag">Service area based</span>
-                <span class="card-tag">Lead capture</span>
-                <span class="status-pill">Popular</span>
-              </div>
+              <p class="card-label">Local service</p>
+              <h3 class="card-title">Moving / Hauling / Home Service System</h3>
               <p class="card-body">
-                Built for people who have hustle and access to a truck, tools or time – not for people chasing apps and luck.
+                Built for people with hustle and access to a truck, tools or time – not for people chasing magic apps.
               </p>
               <ul>
-                <li>Simple one-page site with services, coverage area and FAQs.</li>
-                <li>Quote / booking form that feeds into a basic job tracker.</li>
-                <li>Templates for quotes, invoices and follow-up messages.</li>
+                <li>Simple one-page site with services and area.</li>
+                <li>Quote / booking form to a job tracker.</li>
+                <li>Quote, invoice and follow-up templates.</li>
               </ul>
-              <button class="btn btn-ghost" data-scroll="#contact">Ask about local service builds</button>
+              <button class="btn btn-ghost" data-scroll="#contact">Ask about service builds</button>
             </article>
 
-            <!-- Card 3 -->
             <article class="card">
-              <div class="card-label">Channel / media</div>
-              <div class="card-title">Faceless Automation Channel</div>
-              <div class="card-tag-row">
-                <span class="card-tag">YouTube / short-form</span>
-                <span class="card-tag">Systemized uploads</span>
-                <span class="status-pill">Concept slot</span>
-              </div>
+              <p class="card-label">Channel / media</p>
+              <h3 class="card-title">Faceless Automation Channel</h3>
               <p class="card-body">
-                A themed content channel with branding, starter concepts and a publishing workflow that can plug into your life.
+                Themed content channel with branding, starter concepts and a repeatable upload workflow.
               </p>
               <ul>
-                <li>Channel name, positioning and visual identity.</li>
-                <li>Content map with topics, hooks and sample scripts / prompts.</li>
-                <li>Upload checklist so each video follows the same flow.</li>
+                <li>Channel name, positioning and visuals.</li>
+                <li>Content topics and sample scripts / hooks.</li>
+                <li>Upload checklist and workflow.</li>
               </ul>
               <button class="btn btn-ghost" data-scroll="#contact">Ask about channel builds</button>
             </article>
 
-            <!-- Card 4 -->
             <article class="card">
-              <div class="card-label">Micro-office</div>
-              <div class="card-title">Appointment-Based Specialty Service</div>
-              <div class="card-tag-row">
-                <span class="card-tag">High-touch</span>
-                <span class="card-tag">By appointment</span>
-                <span class="status-pill">Case-by-case</span>
-              </div>
+              <p class="card-label">Bundle</p>
+              <h3 class="card-title">Starter Stack (Brand + Site + Leads)</h3>
               <p class="card-body">
-                Designed around small, focused offices – not giant corporate operations. Think “lean operation with a calendar”.
+                For people who just need a clean presence and a way to catch leads while they get moving.
               </p>
               <ul>
-                <li>Intake / booking flow mapped into clear steps.</li>
-                <li>Explainer site with service list and what clients should expect.</li>
-                <li>Owner summary showing where bottlenecks and upside are.</li>
+                <li>Basic brand kit (name, logo, colors).</li>
+                <li>One-page site with clear call-to-action.</li>
+                <li>Lead capture plus simple follow-up messages.</li>
               </ul>
-              <button class="btn btn-ghost" data-scroll="#contact">Ask about specialty builds</button>
+              <button class="btn btn-ghost" data-scroll="#contact">Ask about starter stacks</button>
             </article>
 
-            <!-- Card 5 -->
-            <article c
+            <article class="card">
+              <p class="card-label">Custom</p>
+              <h3 class="card-title">Custom SSAG Build</h3>
+              <p class="card-body">
+                You describe what you already have (time, vehicle, skills). SSAG proposes a realistic build or says “no”.
+              </p>
+              <ul>
+                <li>Reality-check on your idea and town.</li>
+                <li>Written scope of what’s included.</li>
+                <li>Delivery plan and handover summary.</li>
+              </ul>
+              <button class="btn btn-primary" data-scroll="#contact">Request a custom build</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="section-label">Flow</p>
+            <h2 class="section-title">How a marketplace deal works</h2>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <p class="step-number">1</p>
+              <h3>Pick a model</h3>
+              <p>You choose a marketplace concept or explain what you want to own and what you have to work with.</p>
+            </div>
+            <div class="step">
+              <p class="step-number">2</p>
+              <h3>Scope + build</h3>
+              <p>SSAG writes out exactly what’s being built (assets, systems, docs) and then does the build work.</p>
+            </div>
+            <div class="step">
+              <p class="step-number">3</p>
+              <h3>Handover</h3>
+              <p>You get logins, files and an owner guide that explains how leads and money move in plain language.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="shell contact-grid">
+          <div>
+            <div class="section-heading">
+              <p class="section-label">Next step</p>
+              <h2 class="section-title">Tell SSAG what you’re trying to build or buy</h2>
+              <p class="section-text">
+                Use this form to ask about a marketplace concept or request a custom build. This is just an inquiry,
+                not a commitment.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <form class="form-grid" action="#" method="post">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label for="interest">What are you interested in?</label>
+                <select id="interest" name="interest">
+                  <option value="">Choose one</option>
+                  <option value="ecom">Turnkey e-commerce brand</option>
+                  <option value="service">Local service business</option>
+                  <option value="channel">Channel / content build</option>
+                  <option value="starter">Starter stack (brand + site + leads)</option>
+                  <option value="custom">Custom build around my situation</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="details">Describe what you want to own and what you already have</label>
+                <textarea id="details" name="details" placeholder="Example: I’m in Tucson with a 26 ft truck and want a small moving system that can realistically reach $3–5k/month."></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Submit (placeholder form)</button>
+              <p class="form-note">
+                This form is a placeholder only. When you’re ready, connect it to your email or a form service so messages reach you.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-row">
+        <span>© <span id="year"></span> SSAG Marketplace · Stealth Systems Automation Group.</span>
+        <span>Tucson, Arizona · built for straightforward owner-run businesses.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
