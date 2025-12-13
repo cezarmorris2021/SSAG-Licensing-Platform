@@ -3,314 +3,712 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSAG Marketplace</title>
-  <meta name="description" content="SSAG Marketplace – turnkey, ready-built business systems: e-commerce brands, local service companies, YouTube automation channels and more.">
+  <title>SSAG – Stealth Systems Automation Group | Turnkey Business Systems & Royalties</title>
+
+  <!-- SEO -->
+  <meta name="description" content="SSAG (Stealth Systems Automation Group) is an umbrella enterprise that designs, builds, and licenses turnkey business systems that pay ongoing royalties and service fees." />
+  <meta property="og:title" content="SSAG – Stealth Systems Automation Group" />
+  <meta property="og:description" content="Umbrella enterprise for turnkey business systems, licensing, royalties, and automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cezarmorris2021.github.io/ssag-marketplace/" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SSAG – Stealth Systems Automation Group",
+    "description": "Umbrella enterprise for turnkey business systems, licensing, royalties, and automation.",
+    "url": "https://cezarmorris2021.github.io/ssag-marketplace/",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "business",
+      "email": "cezarmorris2021@gmail.com"
+    }]
+  }
+  </script>
 
   <style>
     :root {
-      --bg: #0b0f16;
-      --panel: #111827;
-      --accent: #10b981;
-      --accent-text: #022c22;
-      --accent-alt: #2563eb;
+      --bg: #020617;
+      --bg-soft: #02081b;
+      --card: #020617;
+      --border: rgba(51, 65, 85, 0.85);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.16);
+      --accent-alt: #38bdf8;
       --text-main: #e5e7eb;
       --text-soft: #9ca3af;
-      --border: #1f2937;
-      --max-width: 960px;
+      --muted: #6b7280;
+      --danger: #fb7185;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #020617 60%, #000 100%);
+      background: radial-gradient(circle at top, #020617 0, #020617 55%, #000 100%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .shell {
-      width: 90%;
-      max-width: var(--max-width);
-      margin: 0 auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    header {
-      background: #020617;
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 0;
     }
 
     .brand {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    .brand h1 {
-      margin: 0;
-      font-size: 1.7rem;
-      letter-spacing: 0.14em;
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.2), #020617 60%);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-name {
+      font-size: 0.96rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .brand p {
-      margin: 0.35rem 0 0;
+    .brand-name span {
+      color: var(--accent);
+    }
+
+    .brand-tag {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 0.25rem 0.1rem;
+      color: var(--text-soft);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.12rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), var(--accent-alt));
+      transition: width 140ms ease-out;
+    }
+
+    .nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      padding: 0.4rem 0.9rem;
+      background: var(--accent-soft);
+      color: #bbf7d0;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-soft);
+      background: radial-gradient(circle at left, rgba(34, 197, 94, 0.18), #020617 60%);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(2.3rem, 3.3vw + 1.4rem, 3.3rem);
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      margin: 0 0 1.3rem;
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .metric-pill {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #16a34a);
+      color: #022c22;
+      box-shadow: 0 16px 32px rgba(22, 163, 74, 0.7);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      background: #020617;
+      color: var(--text-main);
+    }
+
+    .hero-panel {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.2), #020617 60%);
+      padding: 1rem;
+      font-size: 0.84rem;
+      box-shadow: 0 18px 34px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-panel-title {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .hero-panel-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-soft);
+    }
+
+    .hero-panel-row strong {
+      color: var(--text-main);
+    }
+
+    .hero-panel-note {
+      margin-top: 0.7rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    .section {
+      padding: 2.6rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      margin: 0 0 0.3rem;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      margin: 0;
       font-size: 0.9rem;
       color: var(--text-soft);
-    }
-
-    main {
-      padding: 2rem 0 3rem;
-    }
-
-    .hero {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.6rem;
-    }
-
-    .hero p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--text-soft);
+      max-width: 40rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
       gap: 1rem;
-      margin-bottom: 3rem;
     }
 
-    @media (min-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     .card {
-      background: var(--panel);
-      border-radius: 12px;
+      border-radius: 18px;
+      background: var(--card);
       border: 1px solid var(--border);
-      padding: 1.1rem 1rem;
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.7);
-    }
-
-    .card h3 {
-      margin: 0 0 0.4rem;
-      font-size: 1rem;
-    }
-
-    .card p {
-      margin: 0 0 0.8rem;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .card ul {
-      margin: 0 0 0.9rem;
-      padding-left: 1.1rem;
+      padding: 0.95rem;
+      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
       font-size: 0.86rem;
-      color: var(--text-main);
     }
 
-    .btn {
-      display: inline-block;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
-      cursor: pointer;
-      background: #1f2937;
-      color: var(--text-main);
-      text-align: center;
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 0.35rem;
     }
 
-    .btn:hover {
-      background: var(--accent-alt);
-      border-color: var(--accent-alt);
+    .card-title {
+      margin: 0 0 0.35rem;
+      font-size: 0.98rem;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--accent-text);
-    }
-
-    .btn-primary:hover {
-      background: #0ea769;
-      border-color: #0ea769;
-    }
-
-    .contact {
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact h2 {
-      margin: 0 0 0.4rem;
-      font-size: 1.4rem;
-    }
-
-    .contact p {
-      margin: 0 0 1.1rem;
-      font-size: 0.9rem;
+    .card-body {
+      margin: 0;
       color: var(--text-soft);
     }
 
-    .form {
-      display: grid;
-      gap: 0.8rem;
-      text-align: left;
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
     }
 
-    .form input,
-    .form textarea {
-      width: 100%;
-      border-radius: 8px;
+    .chip {
+      border-radius: 999px;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.7rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .offer-card {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), #020617 60%);
       border: 1px solid var(--border);
-      padding: 0.7rem 0.75rem;
+      padding: 1rem;
+      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
+      font-size: 0.86rem;
+    }
+
+    .offer-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .offer-name {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .offer-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .offer-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .offer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .offer-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      border: 1px solid var(--accent);
       background: #020617;
-      color: var(--text-main);
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .offer-btn.secondary {
+      border-color: var(--border);
+      color: var(--text-soft);
+    }
+
+    .step-list {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.86rem;
+      margin-top: 0.5rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .step-body {
+      flex: 1;
+    }
+
+    .step-title {
       font-size: 0.9rem;
-      font-family: inherit;
+      margin-bottom: 0.15rem;
+    }
+
+    .step-text {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.85);
+      font-size: 0.86rem;
+    }
+
+    .faq-q {
+      margin: 0 0 0.25rem;
+      font-weight: 600;
+    }
+
+    .faq-a {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 860px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .form-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), #020617 60%);
+      padding: 1rem;
+      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
+      font-size: 0.86rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+
+    .field {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 0.2rem;
+      color: var(--text-soft);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.8);
+      padding: 0.5rem 0.6rem;
+      color: var(--text-main);
+      font-size: 0.84rem;
       outline: none;
     }
 
-    .form textarea {
-      min-height: 100px;
+    .field textarea {
       resize: vertical;
+      min-height: 80px;
     }
 
-    .form input::placeholder,
-    .form textarea::placeholder {
-      color: var(--text-soft);
-    }
-
-    .form input:focus,
-    .form textarea:focus {
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.7), 0 0 0 5px rgba(16, 185, 129, 0.25);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.7);
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.1rem 0 1.6rem;
-      text-align: center;
-      font-size: 0.78rem;
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, var(--accent), #16a34a);
+      color: #022c22;
+      font-size: 0.84rem;
+      cursor: pointer;
+    }
+
+    .contact-meta {
+      font-size: 0.84rem;
       color: var(--text-soft);
+    }
+
+    .contact-meta strong {
+      color: var(--text-main);
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .badge-danger {
+      color: var(--danger);
+    }
+
+    .footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.98);
+      padding: 1.6rem 0 2.1rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .hero {
+        padding-top: 2.3rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="shell brand">
-      <h1>SSAG Marketplace</h1>
-      <p>Turnkey Businesses · Automated Systems · Ready to Own</p>
-    </div>
-  </header>
 
-  <main>
-    <section class="shell hero">
-      <h2>Your Marketplace of Ready-Built Businesses</h2>
-      <p>
-        Browse example builds and concepts SSAG can create and hand over. Select a model, request ownership, and
-        the system is completed around your situation.
-      </p>
-    </section>
-
-    <section class="shell">
-      <div class="grid">
-        <!-- Card 1 -->
-        <article class="card">
-          <h3>Turnkey E-Commerce Brand</h3>
-          <p>Micro-brand store with products, basic automations, and a simple launch plan.</p>
-          <ul>
-            <li>Brand name, logo, and color scheme.</li>
-            <li>Store with 5–10 starter products.</li>
-            <li>Basic email or message follow-up flow.</li>
-          </ul>
-          <button class="btn" onclick="scrollToContact()">Ask about e-commerce builds</button>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card">
-          <h3>Local Service Business System</h3>
-          <p>Moving, hauling, cleaning or similar service with clear intake and job-flow.</p>
-          <ul>
-            <li>Simple website or landing page.</li>
-            <li>Quote / booking form that feeds into a tracker.</li>
-            <li>Templates for quotes, invoices and follow-ups.</li>
-          </ul>
-          <button class="btn" onclick="scrollToContact()">Ask about local service builds</button>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card">
-          <h3>YouTube / Automation Channel</h3>
-          <p>Faceless content channel concept with starter content plan and workflow.</p>
-          <ul>
-            <li>Channel name, branding and positioning.</li>
-            <li>Content topics and sample scripts/ideas.</li>
-            <li>Upload workflow so it’s easy to repeat.</li>
-          </ul>
-          <button class="btn" onclick="scrollToContact()">Ask about channel builds</button>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="card">
-          <h3>SSAG Specialty Build</h3>
-          <p>Custom build designed around your assets, skills and goals.</p>
-          <ul>
-            <li>You explain what you want to own and what you have to work with.</li>
-            <li>SSAG designs a realistic, simple business system.</li>
-            <li>Scope and handover terms agreed in advance.</li>
-          </ul>
-          <button class="btn btn-primary" onclick="scrollToContact()">Request a custom build</button>
-        </article>
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-logo">SS</div>
+      <div class="brand-text">
+        <div class="brand-name"><span>SSAG</span> | Stealth Systems Automation Group</div>
+        <div class="brand-tag">Turnkey business systems · Licensing · Royalties · Automation</div>
       </div>
-    </section>
-
-    <section class="shell contact" id="contact">
-      <h2>Request Ownership or More Info</h2>
-      <p>
-        Use this form to ask about any Marketplace concept or describe a custom build you want. This is just an inquiry,
-        not a contract.
-      </p>
-      <form class="form" action="#" method="post">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Which business model are you interested in, and what city/state are you in?" required></textarea>
-        <button type="submit" class="btn btn-primary">Submit (placeholder form)</button>
-      </form>
-      <p style="margin-top:0.7rem;font-size:0.78rem;color:var(--text-soft);">
-        This form is a placeholder only. When you’re ready, connect it to your email or a form service so messages reach you.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell">
-      © <span id="year"></span> SSAG Marketplace · Stealth Systems Automation Group
     </div>
-  </footer>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#model">Model</a>
+      <a href="#builds">What We Build</a>
+      <a href="#royalties">Royalties</a>
+      <a href="#divisions">Divisions</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply" class="nav-cta">Apply to SSAG</a>
+    </nav>
+  </div>
+</header>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">
+        <span>⚙️ SSAG Umbrella Enterprise</span>
+        <span class="badge-danger">Signature: Every build pays monthly royalties</span>
+      </div>
+      <h1>We build & license <span>turnkey business systems</span> that pay royalties back to SSAG.</h1>
+      <p class="hero-text">
+        SSAG (Stealth Systems Automation Group) is an umbrella enterprise that designs, builds, and deploys
+        complete business systems. Every system runs under SSAG standards and pays monthly royalties and service
+        fees. We don’t sell websites – we build machines that pay us every month.
+      </p>
 
-    function scrollToContact() {
-      const el = document.getElementById("contact");
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY - 20;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  </script>
-</body>
-</html>
+      <div class="hero-metrics">
+        <div class="metric-pill">🏛 Umbrella enterprise · Licensing & royalties</div>
+        <div class="metric-pill">🧱 Turnkey systems: e-com, service, content, hybrid</div>
+        <div class="metric-pill">📡 Automation, documentation, ongoing support</div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#apply" class="btn-primary">Apply to become an SSAG Partner Business</a>
+        <a href="#model" class="btn-secondary">How the SSAG model works</a>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <div class="hero-panel-title">The SSAG promise (to ourselves)</div>
+      <div class="hero-panel-row">
+        <span>01 · Identity</span>
+        <span><strong>SSAG is the umbrella enterprise.</strong> Everything we build under SSAG pays SSAG.</span>
+      </div>
+      <div class="hero-panel-row">
+        <span>02 · Non-negotiable</span>
+        <span><strong>Every build = royalties + service fees.</strong> This signature never changes.</span>
+      </div>
+      <div class="hero-panel-row">
+        <span>03 · Systems-first</span>
+        <span><strong>We build systems, not sites.</strong> Automation, structure, documentation.</span>
+      </div>
+      <div class="hero-panel-row">
+        <span>04 · Standards</span>
+        <span><strong>Not everyone qualifies.</strong> We protect SSAG by being selective.</span>
+      </div>
+      <p class="hero-panel-note">
+        Note: SSAG is currently focused on building its own core, standards, and pipeline. No outside brands
+        are considered “under” SSAG until they sign and pay as official SSAG Partner Businesses.
+      </p>
+    </aside>
+  </div>
+</section>
