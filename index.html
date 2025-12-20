@@ -1,1247 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSAG – Stealth Systems Automation Group | Turnkey Business Systems & Royalties</title>
-
-  <!-- SEO -->
-  <meta name="description" content="SSAG (Stealth Systems Automation Group) is an umbrella enterprise that designs, builds, and licenses turnkey business systems that pay ongoing royalties and service fees." />
-  <meta property="og:title" content="SSAG – Stealth Systems Automation Group" />
-  <meta property="og:description" content="Umbrella enterprise for turnkey business systems, licensing, royalties, and automation." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cezarmorris2021.github.io/ssag-marketplace/" />
-
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SSAG – Stealth Systems Automation Group",
-    "description": "Umbrella enterprise for turnkey business systems, licensing, royalties, and automation.",
-    "url": "https://cezarmorris2021.github.io/ssag-marketplace/",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "business",
-      "email": "cezarmorris2021@gmail.com"
-    }]
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg: #020617;
-      --bg-soft: #02081b;
-      --card: #020617;
-      --border: rgba(51, 65, 85, 0.85);
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.16);
-      --accent-alt: #38bdf8;
-      --text-main: #e5e7eb;
-      --text-soft: #9ca3af;
-      --muted: #6b7280;
-      --danger: #fb7185;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #020617 55%, #000 100%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(15, 23, 42, 0.98);
-      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
-      backdrop-filter: blur(14px);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.8rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.2), #020617 60%);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-    }
-
-    .brand-name {
-      font-size: 0.96rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .brand-name span {
-      color: var(--accent);
-    }
-
-    .brand-tag {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.85rem;
-    }
-
-    .nav a {
-      position: relative;
-      padding: 0.25rem 0.1rem;
-      color: var(--text-soft);
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.12rem;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(to right, var(--accent), var(--accent-alt));
-      transition: width 140ms ease-out;
-    }
-
-    .nav a:hover {
-      color: var(--text-main);
-    }
-
-    .nav a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      padding: 0.4rem 0.9rem;
-      background: var(--accent-soft);
-      color: #bbf7d0;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 3rem 0 2.5rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 1.75rem;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 860px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.78rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      color: var(--text-soft);
-      background: radial-gradient(circle at left, rgba(34, 197, 94, 0.18), #020617 60%);
-      margin-bottom: 0.7rem;
-    }
-
-    .hero h1 {
-      margin: 0 0 0.8rem;
-      font-size: clamp(2.3rem, 3.3vw + 1.4rem, 3.3rem);
-      letter-spacing: -0.03em;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-text {
-      margin: 0 0 1.3rem;
-      font-size: 0.98rem;
-      color: var(--text-soft);
-      max-width: 34rem;
-    }
-
-    .hero-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.2rem;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-    }
-
-    .metric-pill {
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.96);
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.88rem;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #16a34a);
-      color: #022c22;
-      box-shadow: 0 16px 32px rgba(22, 163, 74, 0.7);
-    }
-
-    .btn-secondary {
-      border-color: var(--border);
-      background: #020617;
-      color: var(--text-main);
-    }
-
-    .hero-panel {
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.2), #020617 60%);
-      padding: 1rem;
-      font-size: 0.84rem;
-      box-shadow: 0 18px 34px rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-panel-title {
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
-
-    .hero-panel-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-soft);
-    }
-
-    .hero-panel-row strong {
-      color: var(--text-main);
-    }
-
-    .hero-panel-note {
-      margin-top: 0.7rem;
-      font-size: 0.76rem;
-      color: var(--muted);
-    }
-
-    /* Sections */
-    .section {
-      padding: 2.6rem 0;
-    }
-
-    .section-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      margin: 0 0 0.3rem;
-      font-size: 1.4rem;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      max-width: 40rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .card {
-      border-radius: 18px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 0.95rem;
-      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
-      font-size: 0.86rem;
-    }
-
-    .card-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-      margin-bottom: 0.35rem;
-    }
-
-    .card-title {
-      margin: 0 0 0.35rem;
-      font-size: 0.98rem;
-    }
-
-    .card-body {
-      margin: 0;
-      color: var(--text-soft);
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.6rem;
-    }
-
-    .chip {
-      border-radius: 999px;
-      padding: 0.2rem 0.55rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      font-size: 0.7rem;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.96);
-    }
-
-    .offer-card {
-      border-radius: 18px;
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), #020617 60%);
-      border: 1px solid var(--border);
-      padding: 1rem;
-      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
-      font-size: 0.86rem;
-    }
-
-    .offer-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.6rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .offer-name {
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .offer-tag {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-    }
-
-    .offer-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .offer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .offer-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.8rem;
-      border: 1px solid var(--accent);
-      background: #020617;
-      color: var(--accent);
-      cursor: pointer;
-    }
-
-    .offer-btn.secondary {
-      border-color: var(--border);
-      color: var(--text-soft);
-    }
-
-    .step-list {
-      display: grid;
-      gap: 0.7rem;
-      font-size: 0.86rem;
-      margin-top: 0.5rem;
-    }
-
-    .step {
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-start;
-    }
-
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 0.15rem;
-    }
-
-    .step-body {
-      flex: 1;
-    }
-
-    .step-title {
-      font-size: 0.9rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .step-text {
-      margin: 0;
-      color: var(--text-soft);
-    }
-
-    .faq-item {
-      padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(31, 41, 55, 0.85);
-      font-size: 0.86rem;
-    }
-
-    .faq-q {
-      margin: 0 0 0.25rem;
-      font-weight: 600;
-    }
-
-    .faq-a {
-      margin: 0;
-      color: var(--text-soft);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 1.4rem;
-    }
-
-    @media (max-width: 860px) {
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .form-card {
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), #020617 60%);
-      padding: 1rem;
-      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
-      font-size: 0.86rem;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.6rem;
-    }
-
-    .field {
-      flex: 1;
-      min-width: 140px;
-    }
-
-    .field label {
-      display: block;
-      font-size: 0.78rem;
-      margin-bottom: 0.2rem;
-      color: var(--text-soft);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      background: rgba(15, 23, 42, 0.8);
-      padding: 0.5rem 0.6rem;
-      color: var(--text-main);
-      font-size: 0.84rem;
-      outline: none;
-    }
-
-    .field textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.7);
-    }
-
-    .form-note {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.7rem;
-    }
-
-    .btn-submit {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 0.55rem 1.4rem;
-      border: 1px solid transparent;
-      background: linear-gradient(135deg, var(--accent), #16a34a);
-      color: #022c22;
-      font-size: 0.84rem;
-      cursor: pointer;
-    }
-
-    .contact-meta {
-      font-size: 0.84rem;
-      color: var(--text-soft);
-    }
-
-    .contact-meta strong {
-      color: var(--text-main);
-    }
-
-    .contact-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      margin-bottom: 0.5rem;
-      font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.96);
-    }
-
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0 0.8rem;
-    }
-
-    .contact-list li {
-      margin-bottom: 0.3rem;
-    }
-
-    .badge-danger {
-      color: var(--danger);
-    }
-
-    .footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.98);
-      padding: 1.6rem 0 2.1rem;
-      font-size: 0.76rem;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.7rem;
-    }
-
-    @media (max-width: 640px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      .hero {
-        padding-top: 2.3rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SSAG Marketplace | Systems & Services Aggregation Group</title>
+<meta name="description" content="SSAG Marketplace offers TurnKey, licensable business systems across technology, digital marketing, consulting, ecommerce, and automation."/>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0d10;
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  padding: 60px 20px;
+  text-align: center;
+}
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+header p {
+  max-width: 900px;
+  margin: auto;
+  font-size: 1.1rem;
+}
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+h2 {
+  border-bottom: 2px solid #2c5364;
+  padding-bottom: 10px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: #151922;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+.card h3 {
+  margin-top: 0;
+  color: #6fc3df;
+}
+.cta {
+  background: #2c5364;
+  padding: 50px 20px;
+  text-align: center;
+}
+.cta h2 {
+  border: none;
+}
+.cta a {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 30px;
+  background: #0b0d10;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #6fc3df;
+}
+.cta a:hover {
+  background: #6fc3df;
+  color: #000;
+}
+footer {
+  background: #050607;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+</style>
 </head>
+
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    <div class="brand">
-      <div class="brand-logo">SS</div>
-      <div class="brand-text">
-        <div class="brand-name"><span>SSAG</span> | Stealth Systems Automation Group</div>
-        <div class="brand-tag">Turnkey business systems · Licensing · Royalties · Automation</div>
-      </div>
-    </div>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#model">Model</a>
-      <a href="#builds">What We Build</a>
-      <a href="#royalties">Royalties</a>
-      <a href="#divisions">Divisions</a>
-      <a href="#faq">FAQ</a>
-      <a href="#apply" class="nav-cta">Apply to SSAG</a>
-    </nav>
-  </div>
+<header>
+  <h1>SSAG Marketplace</h1>
+  <p>
+    Systems & Services Aggregation Group builds, owns, and licenses fully documented,
+    revenue-ready business systems aligned with the most profitable categories for 2026 and beyond.
+  </p>
 </header>
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">
-        <span>⚙️ SSAG Umbrella Enterprise</span>
-        <span class="badge-danger">Signature: Every build pays monthly royalties</span>
-      </div>
-      <h1>We build & license <span>turnkey business systems</span> that pay royalties back to SSAG.</h1>
-      <p class="hero-text">
-        SSAG (Stealth Systems Automation Group) is an umbrella enterprise that designs, builds, and deploys
-        complete business systems. Every system runs under SSAG standards and pays monthly royalties and service
-        fees. We don’t sell websites – we build machines that pay us every month.
-      </p>
+<section>
+  <h2>What SSAG Is</h2>
+  <p>
+    SSAG is a multi-division enterprise platform. We do not sell ideas or freelance services.
+    We sell <strong>TurnKey, licensable business systems</strong> with defined scope,
+    documented SOPs, clear revenue models, and enterprise-grade risk controls.
+  </p>
+</section>
 
-      <div class="hero-metrics">
-        <div class="metric-pill">🏛 Umbrella enterprise · Licensing & royalties</div>
-        <div class="metric-pill">🧱 Turnkey systems: e-com, service, content, hybrid</div>
-        <div class="metric-pill">📡 Automation, documentation, ongoing support</div>
-      </div>
+<section>
+  <h2>SSAG TurnKey Businesses</h2>
+  <div class="grid">
 
-      <div class="hero-buttons">
-        <a href="#apply" class="btn-primary">Apply to become an SSAG Partner Business</a>
-        <a href="#model" class="btn-secondary">How the SSAG model works</a>
-      </div>
+    <div class="card">
+      <h3>SSAG TechWorks</h3>
+      <p>Technology services and software development including AI workflows, automation, internal tools, SaaS and mobile MVPs.</p>
+      <strong>Revenue:</strong> Projects, retainers, licensing
     </div>
 
-    <aside class="hero-panel">
-      <div class="hero-panel-title">The SSAG promise (to ourselves)</div>
-      <div class="hero-panel-row">
-        <span>01 · Identity</span>
-        <span><strong>SSAG is the umbrella enterprise.</strong> Everything we build under SSAG pays SSAG.</span>
-      </div>
-      <div class="hero-panel-row">
-        <span>02 · Non-negotiable</span>
-        <span><strong>Every build = royalties + service fees.</strong> This signature never changes.</span>
-      </div>
-      <div class="hero-panel-row">
-        <span>03 · Systems-first</span>
-        <span><strong>We build systems, not sites.</strong> Automation, structure, documentation.</span>
-      </div>
-      <div class="hero-panel-row">
-        <span>04 · Standards</span>
-        <span><strong>Not everyone qualifies.</strong> We protect SSAG by being selective.</span>
-      </div>
-      <p class="hero-panel-note">
-        Note: SSAG is currently focused on building its own core, standards, and pipeline. No outside brands
-        are considered “under” SSAG until they sign and pay as official SSAG Partner Businesses.
-      </p>
-    </aside>
-  </div>
-</section><section id="about" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">What is SSAG?</h2>
-      <p class="section-subtitle">
-        SSAG (Stealth Systems Automation Group) is a private enterprise builder and licensing company. It sits
-        above the businesses it creates. Any business built under SSAG uses SSAG systems and pays SSAG monthly.
-      </p>
+    <div class="card">
+      <h3>SSAG Digital Marketing Group</h3>
+      <p>Copywriting, content creation, social media management, PPC advertising, and graphic design services.</p>
+      <strong>Revenue:</strong> Monthly retainers, projects, white-label
     </div>
 
-    <div class="grid grid-3">
-      <article class="card">
-        <div class="card-label">Identity</div>
-        <h3 class="card-title">Umbrella enterprise</h3>
-        <p class="card-body">
-          SSAG is not “just another agency” or web designer. It is the umbrella – the top-level company that
-          creates and licenses complete business systems to approved operators.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Enterprise-level thinking</span>
-          <span class="chip">Long-term structure</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Signature</div>
-        <h3 class="card-title">Royalties & services</h3>
-        <p class="card-body">
-          Every business built under SSAG pays ongoing royalties and service fees. This is the core of the
-          model and does not change. No “one and done” builds live here.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Monthly income</span>
-          <span class="chip">Shared upside</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Focus</div>
-        <h3 class="card-title">Systems, not websites</h3>
-        <p class="card-body">
-          SSAG builds connected systems: brand, funnels, automation, documentation, and owner workflows.
-          Anything that does not act like a real system is not labeled SSAG.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Automation</span>
-          <span class="chip">Documentation</span>
-          <span class="chip">Operational clarity</span>
-        </div>
-      </article>
+    <div class="card">
+      <h3>SSAG Advisory & Optimization</h3>
+      <p>Business consulting focused on HR compliance for remote teams, AI workflow integration, and supply chain sustainability.</p>
+      <strong>Revenue:</strong> Audits, implementations, advisory retainers
     </div>
+
+    <div class="card">
+      <h3>SSAG Ecommerce Systems</h3>
+      <p>Dropshipping, print-on-demand, and arbitrage systems built on Shopify with fulfillment logic.</p>
+      <strong>Revenue:</strong> Store builds, licensing, revenue share
+    </div>
+
+    <div class="card">
+      <h3>SSAG Digital Assets & Courses</h3>
+      <p>Online courses, SOP libraries, business kits, templates, and subscription learning systems.</p>
+      <strong>Revenue:</strong> Digital sales, subscriptions
+    </div>
+
+    <div class="card">
+      <h3>SSAG Automation & VA Ops</h3>
+      <p>Back-office automation, workflow design, and virtual assistant operating systems.</p>
+      <strong>Revenue:</strong> Setup fees, retainers, licensing
+    </div>
+
+    <div class="card">
+      <h3>SSAG Licensing & Certification</h3>
+      <p>Operator licensing, white-label programs, and certified SSAG system operators.</p>
+      <strong>Revenue:</strong> License fees, royalties
+    </div>
+
   </div>
 </section>
 
-<section id="model" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">The SSAG Model</h2>
-      <p class="section-subtitle">
-        Simple on the surface, deep under the hood. SSAG chooses who to work with, builds the system, licenses
-        it, and gets paid for as long as the business operates under SSAG.
-      </p>
-    </div>
-
-    <div class="grid grid-2">
-      <article class="card">
-        <div class="card-label">Lifecycle</div>
-        <h3 class="card-title">How an SSAG build works</h3>
-        <div class="step-list">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <div class="step-title">Apply honestly</div>
-              <p class="step-text">
-                Prospect submits a real picture of their situation: time, money, credit, responsibilities,
-                experience. No hype. No fake stories.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <div class="step-title">Model selection</div>
-              <p class="step-text">
-                SSAG matches them with a model (e-com, service, content, hybrid) that fits their reality, not
-                their fantasy. If nothing fits, SSAG says no.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <div class="step-title">System build</div>
-              <p class="step-text">
-                SSAG designs and deploys the entire system: site, funnels, automations, tracking, playbooks,
-                and launch plan.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-body">
-              <div class="step-title">License & royalties</div>
-              <p class="step-text">
-                Partner signs licensing + royalty terms. They are now operating an SSAG system and agree to pay
-                monthly for the right to run it.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">5</div>
-            <div class="step-body">
-              <div class="step-title">Operation & support</div>
-              <p class="step-text">
-                They run the business day-to-day. SSAG keeps the system alive, updated, and supported according
-                to the service tier they choose.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Principles</div>
-        <h3 class="card-title">Non-negotiable rules</h3>
-        <ul class="contact-list">
-          <li>• SSAG is always the umbrella. Never underneath.</li>
-          <li>• Every SSAG build pays monthly royalties + service fees.</li>
-          <li>• No SSAG branding is given to half-done or low-quality systems.</li>
-          <li>• Partner must respect the system and keep payments current.</li>
-          <li>• SSAG can cut access if licensing terms are broken.</li>
-        </ul>
-        <p class="card-body">
-          These rules are the difference between “just freelancing” and building a real enterprise. SSAG
-          exists to create long-term leverage – not quick random one-off jobs.
-        </p>
-      </article>
-    </div>
-  </div>
+<section>
+  <h2>How the Marketplace Works</h2>
+  <ol>
+    <li>Select a TurnKey business system</li>
+    <li>Apply for access or licensing</li>
+    <li>Receive SOPs, documentation, and training</li>
+    <li>Launch and operate independently</li>
+    <li>Scale through SSAG systems and support</li>
+  </ol>
 </section>
 
-<section id="builds" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">What SSAG builds</h2>
-      <p class="section-subtitle">
-        All builds must qualify as real systems: clear offer, clear traffic path, clear money path, clear
-        responsibilities, and clear documentation.
-      </p>
-    </div>
-
-    <div class="grid grid-3">
-      <article class="card">
-        <div class="card-label">E-commerce systems</div>
-        <h3 class="card-title">Turnkey niche brands</h3>
-        <p class="card-body">
-          Focused products, sharp messaging, funnels, automation, and documentation. Structured to scale
-          and, if needed, be sold as assets later.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Brand core</span>
-          <span class="chip">Store + funnels</span>
-          <span class="chip">Email flows</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Service systems</div>
-        <h3 class="card-title">Lead + operations engines</h3>
-        <p class="card-body">
-          Appointment and lead-driven systems for service operators. Clear intake, follow-up, scheduling, and
-          simple pipelines for tracking work.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Lead capture</span>
-          <span class="chip">Follow-up</span>
-          <span class="chip">Operator workflow</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Content systems</div>
-        <h3 class="card-title">Channel + backend offers</h3>
-        <p class="card-body">
-          Content structures (like YouTube or faceless channels) paired with landing pages, email capture,
-          and offers behind the content.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Channel map</span>
-          <span class="chip">Offer stack</span>
-          <span class="chip">Automation</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Hybrid builds</div>
-        <h3 class="card-title">Multi-path machines</h3>
-        <p class="card-body">
-          Systems that combine product, service, and content into one engine, so income doesn’t depend on a
-          single source.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Multiple income paths</span>
-          <span class="chip">Layered offers</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Internal SSAG</div>
-        <h3 class="card-title">SSAG’s own systems</h3>
-        <p class="card-body">
-          Internal tracking, dashboards, templates, and automations that make SSAG itself stronger. These
-          support every partner business from the umbrella level.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Owner dashboards</span>
-          <span class="chip">Templates</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Future</div>
-        <h3 class="card-title">Franchise-style packages</h3>
-        <p class="card-body">
-          Pre-defined SSAG systems that can be deployed to qualified partners with clear rules, fees, and
-          performance expectations.
-        </p>
-        <div class="chip-row">
-          <span class="chip">Repeatable</span>
-          <span class="chip">Licensable</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section><section id="royalties" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Royalties & service fees</h2>
-      <p class="section-subtitle">
-        This is the SSAG signature. Every build under SSAG carries a royalty and service relationship. No
-        exceptions.
-      </p>
-    </div>
-
-    <div class="grid grid-2">
-      <article class="offer-card">
-        <div class="offer-top-row">
-          <div>
-            <p class="offer-tag">Core structure</p>
-            <h3 class="offer-name">Platform fee + royalties</h3>
-          </div>
-        </div>
-        <p class="offer-meta">
-          Exact numbers can change over time. The structure and idea do not.
-        </p>
-        <ul class="contact-list">
-          <li>• One-time build fee for the turnkey system.</li>
-          <li>• Monthly platform fee (example: $99–$299/month).</li>
-          <li>• Royalty on revenue above a certain threshold (example: 3–7%).</li>
-          <li>• Optional service tiers for ongoing optimization and support.</li>
-        </ul>
-        <p class="card-body">
-          As more SSAG Partner Businesses come online, monthly cashflow grows. The goal is a base of stable
-          platform fees plus upside from royalties.
-        </p>
-      </article>
-
-      <article class="offer-card">
-        <div class="offer-top-row">
-          <div>
-            <p class="offer-tag">Upside & protection</p>
-            <h3 class="offer-name">Why this model exists</h3>
-          </div>
-        </div>
-        <p class="offer-meta">
-          SSAG is not designed for one-time checks. It is built for long-term income and control.
-        </p>
-        <ul class="contact-list">
-          <li>• SSAG gets rewarded when systems work and grow.</li>
-          <li>• Partners get access to ongoing improvements and support.</li>
-          <li>• If terms are broken, SSAG can revoke the license and protect the brand.</li>
-        </ul>
-        <p class="card-body">
-          The biggest power move is this: every new SSAG system adds another monthly line of income. Over
-          time, SSAG becomes a serious umbrella enterprise, not just a project.
-        </p>
-      </article>
-    </div>
-  </div>
+<section>
+  <h2>Who SSAG Is For</h2>
+  <ul>
+    <li>Entrepreneurs seeking proven systems</li>
+    <li>Operators wanting scalable businesses</li>
+    <li>Agencies seeking white-label services</li>
+    <li>Investors and strategic partners</li>
+  </ul>
 </section>
 
-<section id="divisions" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">SSAG divisions</h2>
-      <p class="section-subtitle">
-        Inside SSAG, everything has a role. Even if today it’s all run by the same owner, the structure stays
-        enterprise-level.
-      </p>
-    </div>
+<div class="cta">
+  <h2>Get Started</h2>
+  <a href="mailto:info@ssag.com">Apply to License</a>
+  <a href="mailto:info@ssag.com">Request Consultation</a>
+  <a href="mailto:info@ssag.com">Partner With SSAG</a>
+</div>
 
-    <div class="grid grid-3">
-      <article class="card">
-        <div class="card-label">Division 01</div>
-        <h3 class="card-title">Strategy & Model Lab</h3>
-        <p class="card-body">
-          Designs each system from scratch. Chooses the best model for a partner’s reality and writes the
-          blueprint before any build starts.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Division 02</div>
-        <h3 class="card-title">Build & Automation</h3>
-        <p class="card-body">
-          Executes the system: sites, funnels, automations, tracking, documentation, dashboards and launch
-          guidelines.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Division 03</div>
-        <h3 class="card-title">Licensing & Royalties</h3>
-        <p class="card-body">
-          Handles contracts, platform fees, royalty tracking, and compliance with SSAG terms. This is where
-          SSAG’s monthly income is guarded.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Division 04</div>
-        <h3 class="card-title">Support & Optimization</h3>
-        <p class="card-body">
-          Helps partners with system stability, improvements, and performance tuning based on chosen service
-          tiers.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Division 05</div>
-        <h3 class="card-title">Standards Bureau</h3>
-        <p class="card-body">
-          Protects the SSAG name. Ensures that only fully built, high-quality systems are labeled as SSAG
-          builds or Partner Businesses.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Division 06</div>
-        <h3 class="card-title">Owner’s Office</h3>
-        <p class="card-body">
-          Oversees the entire umbrella: vision, pipeline, approvals, and deciding which deals fit the SSAG
-          model and which do not.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="faq" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">SSAG FAQ</h2>
-      <p class="section-subtitle">
-        Straight answers to how SSAG works, without corporate fluff.
-      </p>
-    </div>
-
-    <div class="grid grid-2">
-      <div>
-        <article class="faq-item">
-          <h3 class="faq-q">Is SSAG a marketing agency?</h3>
-          <p class="faq-a">
-            No. SSAG is an umbrella enterprise and licensing company. Agencies sell services. SSAG builds and
-            licenses entire business systems and collects royalties.
-          </p>
-        </article>
-
-        <article class="faq-item">
-          <h3 class="faq-q">Can I get a “one-time website” from SSAG?</h3>
-          <p class="faq-a">
-            No. If there is no licensing, no royalties, and no ongoing relationship, it is not SSAG. SSAG
-            only does builds that stay connected to SSAG every month.
-          </p>
-        </article>
-
-        <article class="faq-item">
-          <h3 class="faq-q">Are my existing businesses automatically under SSAG?</h3>
-          <p class="faq-a">
-            No. A business only becomes an SSAG Partner Business when it is built or rebuilt through SSAG and
-            formally placed under SSAG licensing and royalty terms.
-          </p>
-        </article>
-      </div>
-
-      <div>
-        <article class="faq-item">
-          <h3 class="faq-q">Can SSAG guarantee a certain income?</h3>
-          <p class="faq-a">
-            No. SSAG guarantees a serious, engineered system and ongoing support according to your agreement.
-            Results depend on operation, market, and effort – not just the system.
-          </p>
-        </article>
-
-        <article class="faq-item">
-          <h3 class="faq-q">What happens if I stop paying SSAG?</h3>
-          <p class="faq-a">
-            If platform fees or royalties are not paid, SSAG can revoke the license, suspend access to
-            automations, and remove the right to use SSAG systems or branding.
-          </p>
-        </article>
-
-        <article class="faq-item">
-          <h3 class="faq-q">Who runs the day-to-day business?</h3>
-          <p class="faq-a">
-            You do. SSAG builds and maintains the system. You own the day-to-day grind, decisions, and
-            leadership inside your business, under SSAG’s umbrella structure.
-          </p>
-        </article>
-      </div>
-    </div>
-  </div>
-</section><section id="apply" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Apply to become an SSAG Partner Business</h2>
-      <p class="section-subtitle">
-        This is not a checkout page. It starts a real conversation. Tell the truth about where you’re at and
-        what you want built. If it fits the SSAG model, you’ll be contacted with next steps.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <article class="form-card">
-        <!-- Simple mailto form; you can switch to Formspree or another handler later -->
-        <form action="mailto:cezarmorris2021@gmail.com" method="post" enctype="text/plain">
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Full name</label>
-              <input id="name" name="Name" type="text" required />
-            </div>
-            <div class="field">
-              <label for="email">Best email</label>
-              <input id="email" name="Email" type="email" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="field">
-              <label for="location">Location (city, state)</label>
-              <input id="location" name="Location" type="text" />
-            </div>
-            <div class="field">
-              <label for="type">What type of system do you want?</label>
-              <select id="type" name="System type">
-                <option value="ecom">Turnkey e-commerce system</option>
-                <option value="service">Turnkey service / lead system</option>
-                <option value="content">Content + backend offer system</option>
-                <option value="hybrid">Hybrid system</option>
-                <option value="not_sure">Not sure – I need guidance</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="situation">Your current situation (be honest)</label>
-            <textarea id="situation" name="Current situation" placeholder="Example: income, time available, responsibilities, debts, obligations, anything that matters..."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="timeline">How soon are you ready to start?</label>
-            <textarea id="timeline" name="Timeline" placeholder="Example: immediately, within 30 days, just exploring right now..."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="understand">
-              Do you understand SSAG requires royalties + monthly service fees for any build?
-            </label>
-            <textarea id="understand" name="Royalties understanding" placeholder="Write YES and explain your understanding in your own words."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="why">Why should SSAG build a system for you?</label>
-            <textarea id="why" name="Why you" placeholder="Tell the truth. No hype. Why you, why now, why SSAG?"></textarea>
-          </div>
-
-          <p class="form-note">
-            This form will open your email app and send the details directly to
-            <strong>cezarmorris2021@gmail.com</strong>. If that doesn’t work on your device, copy these
-            questions into an email manually with the subject line “SSAG Partner Application”.
-          </p>
-
-          <button type="submit" class="btn-submit">Send application to SSAG</button>
-        </form>
-      </article>
-
-      <aside class="contact-meta">
-        <div class="contact-pill">📡 How SSAG responds</div>
-        <p>
-          When an application comes in, the goal is clarity first: is there a real fit between your situation
-          and an SSAG system?
-        </p>
-        <ul class="contact-list">
-          <li>• You may receive direction even if the answer is “not yet”.</li>
-          <li>• If it <strong>is</strong> a fit, you’ll see what a realistic build looks like.</li>
-          <li>• No fake promises. Straight talk only.</li>
-        </ul>
-
-        <p>
-          <strong>Direct contact:</strong><br />
-          Email: <strong>cezarmorris2021@gmail.com</strong><br />
-          (Use “SSAG” in the subject line so it’s easy to find.)
-        </p>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container footer-inner">
-    <span>© <span id="year"></span> SSAG – Stealth Systems Automation Group. All rights reserved.</span>
-    <span>Umbrella enterprise · Turnkey systems · Licensing & royalties.</span>
-  </div>
+<footer>
+  © SSAG – Systems & Services Aggregation Group<br/>
+  All systems are licensed. Results vary by operator execution.
 </footer>
 
-<script>
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-</script>
 </body>
 </html>
-
-  
-  
