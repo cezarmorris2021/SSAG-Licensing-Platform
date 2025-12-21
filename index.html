@@ -1,160 +1,582 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SSAG Marketplace</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="SSAG Marketplace — turnkey business systems, licensing, royalties, automation." />
+
+  <style>
+    :root{
+      --bg0:#070A14;
+      --bg1:#0A0F1F;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.10);
+      --text:#EAF0FF;
+      --muted: rgba(234,240,255,.72);
+
+      --teal:#22D3EE;
+      --green:#22C55E;
+      --lime:#34D399;
+      --blue:#60A5FA;
+      --violet:#A78BFA;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 420px at 18% 8%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(900px 520px at 78% 22%, rgba(34,211,238,.16), transparent 62%),
+        radial-gradient(700px 480px at 55% 78%, rgba(167,139,250,.12), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      color:var(--text);
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:1120px; margin:0 auto; padding:0 16px; }
+
+    /* Top header */
+    .topbar{
+      position:sticky; top:0; z-index:999;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(7,10,20,.86), rgba(7,10,20,.62));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:12px; }
+
+    .brand{ display:flex; align-items:center; gap:12px; min-width: 240px; }
+    .mark{
+      width:38px; height:38px; border-radius:999px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.18);
+      background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.20), rgba(34,197,94,.12));
+      box-shadow: 0 0 0 4px rgba(34,197,94,.06);
+      font-weight:800;
+    }
+    .brand h1{
+      font-size:14px; margin:0; letter-spacing:.14em; font-weight:800;
+      text-transform:uppercase;
+    }
+    .brand h1 .accent{ color: var(--green); }
+    .brand p{ margin:2px 0 0; font-size:12px; color: var(--muted); }
+
+    /* Nav */
+    .nav{ display:flex; align-items:center; gap:16px; }
+    .nav a{
+      font-size:14px;
+      color: rgba(234,240,255,.76);
+      padding:10px 10px;
+      border-radius:10px;
+    }
+    .nav a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+
+    .actions{ display:flex; align-items:center; gap:10px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-weight:800;
+      font-size:14px;
+      letter-spacing:.02em;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      border: 1px solid rgba(34,197,94,.45);
+      background: linear-gradient(180deg, rgba(34,197,94,.95), rgba(18,140,62,.92));
+      color:#04100A;
+      box-shadow: 0 16px 40px rgba(34,197,94,.18);
+    }
+    .btn-primary:hover{ filter: brightness(1.05); }
+
+    .btn-soft{
+      border: 1px solid rgba(34,211,238,.28);
+      background: linear-gradient(90deg, rgba(34,211,238,.18), rgba(167,139,250,.14));
+    }
+
+    /* Mobile menu */
+    .burger{
+      display:none;
+      width:44px; height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .drawer{
+      display:none;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:10px 0 14px;
+    }
+    .drawer a{ display:block; padding:12px 10px; border-radius:12px; color: rgba(234,240,255,.80); }
+    .drawer a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+
+    /* Sections */
+    section{ scroll-margin-top: 92px; } /* fixes “tab clicks but lands under the sticky bar” */
+
+    .hero{ padding:34px 0 10px; }
+    .pillrow{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 16px; }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(234,240,255,.80);
+      font-size:13px;
+    }
+    .pill strong{ color: rgba(255,255,255,.92); }
+    .pill .teal{ color: var(--teal); }
+    .pill .green{ color: var(--green); }
+
+    .headline{
+      font-size: clamp(34px, 6vw, 60px);
+      line-height: 1.02;
+      margin: 18px 0 10px;
+      letter-spacing: -0.02em;
+      font-weight: 900;
+    }
+    .headline .t{ color: var(--teal); }
+    .headline .g{ color: var(--green); }
+    .sub{
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin: 16px 0 22px; }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:18px;
+      padding:18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.35);
+    }
+
+    .grid2{ display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:stretch; }
+    .kpi{
+      display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px;
+    }
+    .kpi .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:14px;
+    }
+    .kpi .card .label{ color: rgba(234,240,255,.70); font-size:12px; }
+    .kpi .card .val{ font-size:16px; font-weight:900; margin-top:6px; }
+    .kpi .card .val span{ color: var(--teal); }
+
+    .section-title{
+      margin: 30px 0 12px;
+      font-size: 22px;
+      letter-spacing:-.01em;
+      font-weight: 900;
+    }
+    .section-title span{ color: var(--teal); }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    .cardx{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:18px;
+      padding:16px;
+      min-height: 140px;
+    }
+    .cardx h3{ margin:0 0 8px; font-size:16px; font-weight:900; }
+    .cardx p{ margin:0; color: rgba(234,240,255,.72); line-height:1.55; font-size:14px; }
+    .tag{ display:inline-flex; padding:6px 10px; border-radius:999px; background: rgba(34,211,238,.10); border:1px solid rgba(34,211,238,.22); color: rgba(234,240,255,.86); font-size:12px; margin-bottom:10px; }
+
+    .list{ margin:10px 0 0; padding-left: 18px; color: rgba(234,240,255,.76); line-height:1.65; }
+
+    .tierwrap{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .tier{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius:18px;
+      padding:16px;
+    }
+    .tier .name{ font-weight: 900; font-size:16px; margin:0; }
+    .tier .price{ font-size:26px; font-weight: 950; margin:10px 0 8px; letter-spacing:-.02em; }
+    .tier .price small{ font-size:12px; color: rgba(234,240,255,.68); font-weight:800; }
+    .tier .pillmini{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,197,94,.24);
+      background: rgba(34,197,94,.10);
+      color: rgba(234,240,255,.90);
+      font-size:12px;
+      margin: 10px 0;
+    }
+    .tier .btn{ width:100%; margin-top:12px; }
+
+    .faq{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:14px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      color: rgba(234,240,255,.92);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin:10px 0 0; color: rgba(234,240,255,.72); line-height:1.6; font-size:14px; }
+
+    footer{
+      margin: 26px 0 40px;
+      color: rgba(234,240,255,.62);
+      font-size:12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .nav{ display:none; }
+      .burger{ display:inline-grid; place-items:center; }
+      .grid2{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .tierwrap{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
+    }
+  </style>
 </head>
+
 <body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="mark">SS</div>
+          <div>
+            <h1><span class="accent">SSAG</span> | STEALTH SYSTEMS AUTOMATION GROUP</h1>
+            <p>Turnkey business systems · Licensing · Royalties · Automation</p>
+          </div>
+        </div>
 
-<nav class="main-nav">
-  <div class="logo">SSAG Marketplace</div>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#model">Model</a>
+          <a href="#what-we-build">What We Build</a>
+          <a href="#royalties">Royalties</a>
+          <a href="#marketplace">Marketplace</a>
+          <a href="#faq">FAQ</a>
+        </nav>
 
-  <nav class="main-nav">
-  <div class="logo">
-    <a href="/">SSAG Marketplace</a>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#how-it-works">How it Works</a></li>
-    <li><a href="#packages">Packages</a></li>
-    <li><a href="#turnkey-builds">TurnKey Builds</a></li>
-    <li><a href="#licenses">Licenses</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="#browse-builds" class="btn btn-primary">Browse Builds</a>
-    <a href="#request-build" class="btn btn-secondary">Buy / Request Build</a>
-  </div>
-  </nav>
-  
-<section class="hero">
-  <div class="container">
-    <p class="badge">⚙️ SSAG Umbrella Enterprise · Licensing & Royalties</p>
+        <div class="actions">
+          <a class="btn btn-soft" href="#marketplace">Browse Builds</a>
+          <a class="btn btn-primary" href="#request">Buy / Request Build</a>
+          <button class="burger" id="burger" aria-label="Open menu">☰</button>
+        </div>
+      </div>
 
-    <h1>
-      We build & license<br>
-      <span class="accent">turnkey business systems</span><br>
-      that pay royalties back to SSAG.
-    </h1>
-
-    <p class="subtext">
-      Real assets. Real systems. Handover-ready businesses built to operate immediately.
-    </p>
-
-    <a href="#turnkey-builds" class="btn btn-primary">View TurnKey Builds</a>
-  </div>
-</section>
-<section class="hero">
-  <div class="container">
-    <p class="badge">⚙️ SSAG Umbrella Enterprise · Licensing & Royalties</p>
-
-    <h1>
-      We build & license<br>
-      <span class="accent">turnkey business systems</span><br>
-      that pay royalties back to SSAG.
-    </h1>
-
-    <p class="subtext">
-      Real assets. Real systems. Handover-ready businesses built to operate immediately.
-    </p>
-
-    <a href="#turnkey-builds" class="btn btn-primary">View TurnKey Builds</a>
-  </div>
-</section>
-<section id="how-it-works" class="section">
-  <h2>How It Works</h2>
-
-  <div class="card-grid">
-    <div class="card">
-      <h3>1. Choose</h3>
-      <p>Select a TurnKey build or request a custom system.</p>
+      <div class="drawer" id="drawer">
+        <a href="#about">About</a>
+        <a href="#model">Model</a>
+        <a href="#what-we-build">What We Build</a>
+        <a href="#royalties">Royalties</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#faq">FAQ</a>
+        <a href="#request">Buy / Request Build</a>
+      </div>
     </div>
+  </header>
+    <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div class="pillrow">
+        <div class="pill">⚙️ <strong>SSAG Umbrella Enterprise</strong></div>
+        <div class="pill"><span class="green">Signature:</span> Every build pays monthly royalties</div>
+      </div>
 
-    <div class="card">
-      <h3>2. Build + Package</h3>
-      <p>SSAG assembles the system: site, workflows, assets.</p>
-    </div>
+      <h2 class="headline">
+        We build & license <span class="g">turnkey</span> <span class="t">business systems</span>
+        that pay royalties back to SSAG.
+      </h2>
 
-    <div class="card">
-      <h3>3. Handover</h3>
-      <p>You receive logins, assets, SOPs, and a runbook.</p>
-    </div>
-  </div>
-</section>
+      <p class="sub">
+        SSAG designs, builds, and deploys complete business systems — not just “a website.”
+        You get assets, workflows, onboarding, templates, automation-ready structure, and a clear owner runbook
+        so you can operate immediately.
+      </p>
 
-<section id="packages" class="section">
-  <h2>Packages</h2>
+      <div class="pillrow">
+        <div class="pill">🏛️ Umbrella enterprise · Licensing & royalties</div>
+        <div class="pill">🧱 Turnkey systems: e-com, service, content, hybrid</div>
+        <div class="pill">📡 Automation, documentation, ongoing support</div>
+      </div>
 
-  <div class="card-grid">
-    <div class="card">
-      <h3>Starter System</h3>
-      <ul>
-        <li>Brand + site</li>
-        <li>Lead capture</li>
-        <li>Owner runbook</li>
-      </ul>
-    </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#request">Apply / Buy / Request Build</a>
+        <a class="btn btn-soft" href="#model">How the SSAG model works</a>
+      </div>
 
-    <div class="card">
-      <h3>Elite TurnKey</h3>
-      <ul>
-        <li>Full system build</li>
-        <li>Automation ready</li>
-        <li>Royalty model</li>
-      </ul>
-    </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="section-title">The SSAG promise <span>(to ourselves)</span></div>
+          <ul class="list">
+            <li><b>SSAG is the umbrella enterprise.</b> Everything built under SSAG pays SSAG.</li>
+            <li><b>Every build = royalties + service fees.</b> This signature does not change.</li>
+            <li><b>We build systems, not sites.</b> Automation + structure + documentation.</li>
+            <li><b>Standards & selectivity.</b> Not everyone qualifies — we protect the brand.</li>
+          </ul>
+        </div>
 
-    <div class="card">
-      <h3>Custom Enterprise</h3>
-      <ul>
-        <li>Scoped build</li>
-        <li>SSAG standards</li>
-        <li>Ongoing ops support</li>
-      </ul>
-    </div>
-  </div>
-</section>
-<section id="turnkey-builds" class="section">
-  <h2>TurnKey Builds</h2>
+        <div class="panel">
+          <div class="section-title">What you receive</div>
+          <div class="kpi">
+            <div class="card">
+              <div class="label">Handover-ready assets</div>
+              <div class="val"><span>Logins</span> + Files</div>
+            </div>
+            <div class="card">
+              <div class="label">Operating system</div>
+              <div class="val"><span>SOPs</span> + Flows</div>
+            </div>
+            <div class="card">
+              <div class="label">Owner guide</div>
+              <div class="val"><span>Runbook</span></div>
+            </div>
+            <div class="card">
+              <div class="label">Support structure</div>
+              <div class="val"><span>Optional</span> Ops</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        <!-- MODEL -->
+    <section id="model">
+      <div class="section-title">Model <span>— simple & repeatable</span></div>
 
-  <div class="card-grid">
-    <div class="card">
-      <h3>Local Service System</h3>
-      <p>Booking, site, workflow, handover.</p>
-    </div>
+      <div class="cards">
+        <div class="cardx">
+          <div class="tag">1) Choose</div>
+          <h3>Pick a build or request custom</h3>
+          <p>Choose a TurnKey system below, or request a custom build based on your goals and budget.</p>
+        </div>
 
-    <div class="card">
-      <h3>E-Commerce Micro Brand</h3>
-      <p>Store, products, follow-ups.</p>
-    </div>
+        <div class="cardx">
+          <div class="tag">2) Build + Package</div>
+          <h3>We assemble the entire system</h3>
+          <p>Website, structure, templates, automation-ready workflows, and documentation — built to SSAG standards.</p>
+        </div>
 
-    <div class="card">
-      <h3>Faceless Content Channel</h3>
-      <p>Brand, scripts, repeatable system.</p>
-    </div>
-  </div>
-</section>
+        <div class="cardx">
+          <div class="tag">3) Handover</div>
+          <h3>You receive assets + runbook</h3>
+          <p>We deliver logins, assets, SOPs, and an owner runbook so you know exactly what to do.</p>
+        </div>
+      </div>
+    </section>
 
-<section id="licenses" class="section">
-  <h2>Licenses</h2>
+    <!-- WHAT WE BUILD -->
+    <section id="what-we-build">
+      <div class="section-title">What We Build <span>— TurnKey Systems</span></div>
 
-  <div class="card-grid">
-    <div class="card">
-      <h3>Operator License</h3>
-      <p>Run the system under SSAG standards.</p>
-    </div>
+      <div class="cards">
+        <div class="cardx">
+          <div class="tag">🛒 E-Commerce</div>
+          <h3>Micro-brands & product engines</h3>
+          <p>Storefront + product structure + follow-up system and conversion assets.</p>
+          <ul class="list">
+            <li>Landing + catalog structure</li>
+            <li>Email/SMS capture + follow-up</li>
+            <li>Ops checklist + runbook</li>
+          </ul>
+        </div>
 
-    <div class="card">
-      <h3>Elite Operator</h3>
-      <p>Expanded rights + scale permissions.</p>
-    </div>
-  </div>
-</section>
+        <div class="cardx">
+          <div class="tag">🧰 Service</div>
+          <h3>Local business system</h3>
+          <p>Lead capture, booking/quotes, service pages, and a simple job workflow.</p>
+          <ul class="list">
+            <li>Booking/quote intake</li>
+            <li>Lead pipeline basics</li>
+            <li>Owner SOPs</li>
+          </ul>
+        </div>
 
-<section id="request-build" class="section">
-  <h2>Buy / Request Build</h2>
-  <p>Email: <strong>cezarmorris2021@gmail.com</strong></p>
-</section>
+        <div class="cardx">
+          <div class="tag">🎥 Content</div>
+          <h3>Faceless content machine</h3>
+          <p>Channel brand kit + scripts + workflow so you can publish on repeat.</p>
+          <ul class="list">
+            <li>Brand + templates</li>
+            <li>Script pack / prompts</li>
+            <li>Upload workflow SOP</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <!-- ROYALTIES -->
+    <section id="royalties">
+      <div class="section-title">Royalties <span>— how SSAG stays strong</span></div>
+      <div class="panel">
+        <p class="sub" style="margin:0">
+          SSAG builds under one umbrella standard. Each licensed system includes a royalty/service structure.
+          That’s what keeps the enterprise growing and funds continuous improvements, templates, and support options.
+        </p>
+      </div>
+    </section>
+
+    <!-- MARKETPLACE -->
+    <section id="marketplace">
+      <div class="section-title">Marketplace <span>— TurnKey Builds</span></div>
+
+      <div class="cards">
+        <div class="cardx">
+          <div class="tag">⚡ Featured</div>
+          <h3>Local Service Starter</h3>
+          <p>Lead capture + booking + service pages + a basic operating workflow.</p>
+        </div>
+        <div class="cardx">
+          <div class="tag">⚡ Featured</div>
+          <h3>E-Commerce Micro-Brand</h3>
+          <p>Store structure + product layout + follow-up system + owner runbook.</p>
+        </div>
+        <div class="cardx">
+          <div class="tag">⚡ Featured</div>
+          <h3>Faceless Content System</h3>
+          <p>Brand kit + content pipeline SOP + repeatable publishing workflow.</p>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top:22px;">License Tiers <span>— choose the level</span></div>
+
+      <div class="tierwrap" id="licenses">
+        <div class="tier">
+          <p class="name">Starter</p>
+          <div class="pillmini">Best for first-time owners</div>
+          <div class="price">$499 <small>+ license terms</small></div>
+          <ul class="list">
+            <li>Base system build</li>
+            <li>Core templates</li>
+            <li>Owner quickstart</li>
+          </ul>
+          <a class="btn btn-soft" href="#request">Request Starter</a>
+        </div>
+
+        <div class="tier">
+          <p class="name">Operator</p>
+          <div class="pillmini">Most popular</div>
+          <div class="price">$2,500 <small>+ license terms</small></div>
+          <ul class="list">
+            <li>Full system build</li>
+            <li>SOPs + runbook</li>
+            <li>Handover checklist</li>
+          </ul>
+          <a class="btn btn-primary" href="#request">Request Operator</a>
+        </div>
+
+        <div class="tier">
+          <p class="name">Elite</p>
+          <div class="pillmini">Highest standard package</div>
+          <div class="price">$5,000 <small>+ license terms</small></div>
+          <ul class="list">
+            <li>System + advanced structure</li>
+            <li>Automation-ready setup</li>
+            <li>Launch checklist + ops plan</li>
+          </ul>
+          <a class="btn btn-soft" href="#request">Request Elite</a>
+        </div>
+      </div>
+
+      <div class="panel" id="request" style="margin-top:14px;">
+        <div class="section-title" style="margin:0 0 10px;">Buy / Request Build</div>
+        <p class="sub" style="margin:0 0 10px;">
+          Use this button to start. If you want a specific build, choose a tier above and request it.
+        </p>
+        <div class="cta-row" style="margin: 0;">
+          <a class="btn btn-primary" href="mailto:cezarmorris2021@gmail.com?subject=SSAG%20Build%20Request&body=Name:%0ARequested%20Build:%0ATier%20(Starter%2FOperator%2FElite):%0ABudget:%0AGoal:%0ATimeline:%0A">
+            Email Request (Fast)
+          </a>
+          <a class="btn btn-soft" href="#faq">Read FAQ</a>
+        </div>
+      </div>
+    </    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-title">FAQ <span>— quick answers</span></div>
+
+      <div class="faq">
+        <details>
+          <summary>What do I actually get?</summary>
+          <p>Assets + logins + structure + workflows + templates + an owner runbook. It’s built to operate, not just look good.</p>
+        </details>
+
+        <details>
+          <summary>How fast can a build be delivered?</summary>
+          <p>Depends on the tier and scope. Starter is fastest, Operator and Elite include more documentation and structure.</p>
+        </details>
+
+        <details>
+          <summary>Do I own the business system?</summary>
+          <p>You receive the delivered assets and access. The licensing/royalty terms define the SSAG umbrella standard.</p>
+        </details>
+
+        <details>
+          <summary>Can I request a custom system?</summary>
+          <p>Yes. Use “Buy / Request Build” and specify what you want built.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>© <span id="yr"></span> SSAG Marketplace</div>
+        <div style="color: rgba(234,240,255,.55);">TurnKey Systems · Licensing · Royalties · Automation</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile drawer
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    burger?.addEventListener('click', () => {
+      const open = drawer.style.display === 'block';
+      drawer.style.display = open ? 'none' : 'block';
+    });
+
+    // Close drawer when clicking a link
+    drawer?.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=> drawer.style.display = 'none');
+    });
+
+    // Current year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Extra-safe scroll fix for sticky header (if any phone browser acts weird)
+    document.querySelectorAll('a[href^="#"]').forEach(link=>{
+      link.addEventListener('click', (e)=>{
+        const id = link.getAttribute('href');
+        if(!id || id === '#') return;
+        const el = document.querySelector(id);
+        if(!el) return; // if missing, do nothing
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.scrollY - 86;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
+section>
+    
