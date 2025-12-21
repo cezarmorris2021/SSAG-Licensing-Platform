@@ -1,74 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSAG Marketplace</title>
+
+<style>
+:root{
+  --bg:#0b0f14;
+  --panel:#121822;
+  --panel2:#0f1623;
+  --text:#e6e9ef;
+  --muted:#9aa4b2;
+  --accent:#3b82f6;
+  --accent2:#22c55e;
+  --border:#1f2937;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Arial;
+  background:radial-gradient(circle at top,#111827,#020617);
+  color:var(--text);
+}
+
+a{color:var(--accent);text-decoration:none}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+header{
+  border-bottom:1px solid var(--border);
+  background:#020617;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-weight:900;
+  letter-spacing:1px;
+  font-size:20px;
+}
+
+.nav a{
+  margin-left:20px;
+  font-weight:600;
+  color:#cbd5f5;
+}
+
+.hero{
+  padding:90px 0;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  max-width:720px;
+  margin:0 auto 30px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:10px;
+  font-weight:700;
+  display:inline-block;
+  margin:6px;
+}
+
+.btn-primary{background:var(--accent);color:white}
+.btn-outline{
+  border:1px solid var(--border);
+  color:#e5e7eb;
+}
+
+.section{
+  padding:70px 0;
+}
+
+.section h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:50px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+}
+
+.card h3{
+  margin-top:0;
+  margin-bottom:10px;
+}
+
+.card ul{
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.card li{margin-bottom:8px}
+
+.price{
+  font-size:26px;
+  font-weight:800;
+  margin:16px 0;
+}
+
+.card .btn{
+  width:100%
+  
+  text-align:center;
+  .steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.step{
+  background:#020617;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px;
+}
+
+.step span{
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--accent);
+  font-weight:800;
+}
+  .trust{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.trust div{
+  background:#020617;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  text-align:center;
+  font-weight:600;
+}
+
+footer{
+  border-top:1px solid var(--border);
+  background:#020617;
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+  </style>
+</head>
+
 <body>
 
+<header>
+  <div class="container nav">
+    <div class="logo">SSAG</div>
+    <div>
+      <a href="#builds">Builds</a>
+      <a href="#how">How it works</a>
+      <a href="#licenses">Licenses</a>
+    </div>
+  </div>
+</header>
 <section class="hero">
-  <h1>SSAG Marketplace</h1>
-  <p>Buy real, ready-to-run business systems. No hype. No theory. Real assets.</p>
-  <a href="#marketplace" class="btn btn-primary">Browse Builds</a>
-  <a href="#marketplace" class="btn btn-secondary">Request Custom Build</a>
-</section>
-
-<section id="marketplace" class="container">
-  <h2>TurnKey Business Builds</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <div class="icon">🛒</div>
-      <h3>E-Commerce Micro-Brand</h3>
-      <ul>
-        <li>Store built & branded</li>
-        <li>Starter products loaded</li>
-        <li>Email follow-up system</li>
-      </ul>
-      <div class="price">$2,500</div>
-      <div class="license">Single-Owner License</div>
-      <a class="btn btn-primary">Buy License</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">📍</div>
-      <h3>Local Service System</h3>
-      <ul>
-        <li>Website + booking</li>
-        <li>Lead capture</li>
-        <li>Job workflow</li>
-      </ul>
-      <div class="price">$3,000</div>
-      <div class="license">Territory License</div>
-      <a class="btn btn-primary">Buy License</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>Faceless Content Channel</h3>
-      <ul>
-        <li>Brand + niche</li>
-        <li>Scripts & posting system</li>
-        <li>Monetization roadmap</li>
-      </ul>
-      <div class="price">$1,500</div>
-      <div class="license">Platform License</div>
-      <a class="btn btn-primary">Buy License</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">⚙️</div>
-      <h3>Custom SSAG Build</h3>
-      <ul>
-        <li>Your idea built correctly</li>
-        <li>Systems + assets</li>
-        <li>Owner handover</li>
-      </ul>
-      <div class="price">Request Quote</div>
-      <div class="license">Exclusive License</div>
-      <a class="btn btn-secondary">Request Build</a>
-    </div>
-
+  <div class="container">
+    <h1>Turnkey Business Systems.<br>Real Ownership. Real Execution.</h1>
+    <p>SSAG builds complete, operational business systems — assets, workflows, automation, and owner runbooks — ready to operate immediately.</p>
+    <a class="btn btn-primary" href="#builds">Browse TurnKey Builds</a>
+    <a class="btn btn-outline" href="#licenses">Request Custom Build</a>
   </div>
 </section>
 
-<footer>
-  © SSAG Marketplace — Systems. Ownership. Control.
+<section id="builds" class="section">
+  <div class="container">
+    <h2>TurnKey Business Builds</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>E-Commerce Micro Brand</h3>
+        <p class="price">$2,500+</p>
+        <ul>
+          <li>Store + products</li>
+          <li>Email & automation</li>
+          <li>Owner guide</li>
+        </ul>
+        <a class="btn btn-primary">Buy / License</a>
+      </div>
+
+      <div class="card">
+        <h3>Local Service System</h3>
+        <p class="price">$1,500+</p>
+        <ul>
+          <div class="card">
+        <h3>Local Service System</h3>
+        <p class="price">$1,500+</p>
+        <ul>
+          <li>Website + booking</li>
+          <li>Lead & job flow</li>
+          <li>Runbook included</li>
+        </ul>
+        <a class="btn btn-primary">Buy / License</a>
+          </div>
+         <div class="card">
+        <h3>Faceless Content Channel</h3>
+        <p class="price">$1,000+</p>
+        <ul>
+          <li>Brand + scripts</li>
+          <li>Repeatable workflow</li>
+          <li>Monetization ready</li>
+        </ul>
+        <a class="btn btn-primary">Buy / License</a>
+      </div>
+
+      <div class="card">
+        <h3>Custom SSAG Build</h3>
+        <p class="price">Scoped</p>
+        <ul> 
+          <div class="card">
+        <h3>Custom SSAG Build</h3>
+        <p class="price">Scoped</p>
+        <ul>
+          <li>Your idea, fully built</li>
+          <li>Systems + assets</li>
+          <li>Complete handover</li>
+        </ul>
+        <a class="btn btn-outline">Request Build</a>
+      </div>
+    </div>
+  </div>
+</section
+      <section id="how" class="section">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><span>STEP 1</span><h4>Choose</h4><p>Select a build or request custom.</p></div>
+      <div class="step"><span>STEP 2</span><h4>Build</h4><p>SSAG assembles the system.</p></div>
+      <div class="step"><span>STEP 3</span><h4>Handover</h4><p>You receive assets & runbook.</p></div>
+      <div class="step"><span>STEP 4</span><h4>Operate</h4><p>You run & scale.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>What SSAG Stands For</h2>
+    <div class="trust">
+      <div>Real systems — not ideas</div>
+      <div>Ownership of assets & access</div>
+      <div>Plain-language runbooks</div>
+      <div>Built to operate immediately</div>
+    </div>
+    <footer>
+  Stealth Systems Automation Group
 </footer>
 
 </body>
+  </html>
