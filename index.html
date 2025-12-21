@@ -1,282 +1,499 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSAG Marketplace</title>
-
-<style>
-:root{
-  --bg:#0b0f14;
-  --panel:#121822;
-  --panel2:#0f1623;
-  --text:#e6e9ef;
-  --muted:#9aa4b2;
-  --accent:#3b82f6;
-  --accent2:#22c55e;
-  --border:#1f2937;
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Segoe UI,Arial;
-  background:radial-gradient(circle at top,#111827,#020617);
-  color:var(--text);
-}
-
-a{color:var(--accent);text-decoration:none}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-header{
-  border-bottom:1px solid var(--border);
-  background:#020617;
-}
-
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-weight:900;
-  letter-spacing:1px;
-  font-size:20px;
-}
-
-.nav a{
-  margin-left:20px;
-  font-weight:600;
-  color:#cbd5f5;
-}
-
-.hero{
-  padding:90px 0;
-  text-align:center;
-}
-
-.hero h1{
-  font-size:48px;
-  margin-bottom:15px;
-}
-
-.hero p{
-  max-width:720px;
-  margin:0 auto 30px;
-  color:var(--muted);
-  font-size:18px;
-}
-
-.btn{
-  padding:14px 22px;
-  border-radius:10px;
-  font-weight:700;
-  display:inline-block;
-  margin:6px;
-}
-
-.btn-primary{background:var(--accent);color:white}
-.btn-outline{
-  border:1px solid var(--border);
-  color:#e5e7eb;
-}
-
-.section{
-  padding:70px 0;
-}
-
-.section h2{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:50px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-}
-
-.card{
-  background:linear-gradient(180deg,var(--panel),var(--panel2));
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:28px;
-}
-
-.card h3{
-  margin-top:0;
-  margin-bottom:10px;
-}
-
-.card ul{
-  padding-left:18px;
-  color:var(--muted);
-}
-
-.card li{margin-bottom:8px}
-
-.price{
-  font-size:26px;
-  font-weight:800;
-  margin:16px 0;
-}
-
-.card .btn{
-  width:100%
-  
-  text-align:center;
-  .steps{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.step{
-  background:#020617;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:24px;
-}
-
-.step span{
-  font-size:12px;
-  letter-spacing:2px;
-  color:var(--accent);
-  font-weight:800;
-}
-  .trust{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-
-.trust div{
-  background:#020617;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:20px;
-  text-align:center;
-  font-weight:600;
-}
-
-footer{
-  border-top:1px solid var(--border);
-  background:#020617;
-  text-align:center;
-  padding:30px;
-  color:var(--muted);
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SSAG Marketplace — TurnKey Business Systems</title>
+  <meta name="description" content="SSAG Marketplace — elite turnkey business systems. License, deploy, and operate real systems that pay monthly royalties back to SSAG." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- Ambient background -->
+  <div class="bg-glow" aria-hidden="true"></div>
 
-<header>
-  <div class="container nav">
-    <div class="logo">SSAG</div>
-    <div>
-      <a href="#builds">Builds</a>
-      <a href="#how">How it works</a>
-      <a href="#licenses">Licenses</a>
-    </div>
-  </div>
-</header>
-<section class="hero">
-  <div class="container">
-    <h1>Turnkey Business Systems.<br>Real Ownership. Real Execution.</h1>
-    <p>SSAG builds complete, operational business systems — assets, workflows, automation, and owner runbooks — ready to operate immediately.</p>
-    <a class="btn btn-primary" href="#builds">Browse TurnKey Builds</a>
-    <a class="btn btn-outline" href="#licenses">Request Custom Build</a>
-  </div>
-</section>
-
-<section id="builds" class="section">
-  <div class="container">
-    <h2>TurnKey Business Builds</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>E-Commerce Micro Brand</h3>
-        <p class="price">$2,500+</p>
-        <ul>
-          <li>Store + products</li>
-          <li>Email & automation</li>
-          <li>Owner guide</li>
-        </ul>
-        <a class="btn btn-primary">Buy / License</a>
-      </div>
-
-      <div class="card">
-        <h3>Local Service System</h3>
-        <p class="price">$1,500+</p>
-        <ul>
-          <div class="card">
-        <h3>Local Service System</h3>
-        <p class="price">$1,500+</p>
-        <ul>
-          <li>Website + booking</li>
-          <li>Lead & job flow</li>
-          <li>Runbook included</li>
-        </ul>
-        <a class="btn btn-primary">Buy / License</a>
+  <!-- Top Bar -->
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">
+        <div class="brand-mark">SS</div>
+        <div class="brand-text">
+          <div class="brand-title">
+            <span class="brand-accent">SSAG</span> <span class="sep">|</span> STEALTH SYSTEMS AUTOMATION GROUP
           </div>
-         <div class="card">
-        <h3>Faceless Content Channel</h3>
-        <p class="price">$1,000+</p>
-        <ul>
-          <li>Brand + scripts</li>
-          <li>Repeatable workflow</li>
-          <li>Monetization ready</li>
-        </ul>
-        <a class="btn btn-primary">Buy / License</a>
+          <div class="brand-sub">Turnkey business systems · Licensing · Royalties · Automation</div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Custom SSAG Build</h3>
-        <p class="price">Scoped</p>
-        <ul> 
-          <div class="card">
-        <h3>Custom SSAG Build</h3>
-        <p class="price">Scoped</p>
-        <ul>
-          <li>Your idea, fully built</li>
-          <li>Systems + assets</li>
-          <li>Complete handover</li>
-        </ul>
-        <a class="btn btn-outline">Request Build</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#model">Model</a>
+        <a href="#builds">TurnKey Builds</a>
+        <a href="#packages">Packages</a>
+        <a href="#licenses">Licenses</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-ghost" href="#request">Buy / Request Build</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.body.classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <--Mobile Nav Drawer -->
+    <div class="nav-drawer">
+      <a href="#about" onclick="document.body.classList.remove('nav-open')">About</a>
+      <a href="#model" onclick="document.body.classList.remove('nav-open')">Model</a>
+      <a href="#builds" onclick="document.body.classList.remove('nav-open')">TurnKey Builds</a>
+      <a href="#packages" onclick="document.body.classList.remove('nav-open')">Packages</a>
+      <a href="#licenses" onclick="document.body.classList.remove('nav-open')">Licenses</a>
+      <a href="#faq" onclick="document.body.classList.remove('nav-open')">FAQ</a>
+      <a class="btn btn-primary" href="#request" onclick="document.body.classList.remove('nav-open')">Buy / Request Build</a>
+    </div>
+  </header>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div class="wrap hero-grid">
+        <div class="hero-left">
+          <div class="pill-row">
+            <span class="pill">⚙️ SSAG Umbrella Enterprise</span>
+            <span class="pill pill-warn">Signature: Every build pays monthly royalties</span>
+          </div>
+
+          <h1 class="headline">
+            We build & license <span class="grad">turnkey business systems</span> that pay royalties back to SSAG.
+          </h1>
+
+          <p class="lead">
+            SSAG (Stealth Systems Automation Group) designs, builds, and deploys complete business systems.
+            We don’t sell “websites.” We deliver **handover-ready machines**: assets, workflows, templates,
+            onboarding, and an owner runbook — built to operate immediately.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#builds">View TurnKey Builds</a>
+            <a class="btn btn-ghost" href="#model">How it works</a>
+          </div>
+
+          <div class="mini-proof">
+            <div class="mini-card">
+              <div class="mini-top">✅ Deliverables</div>
+              <div class="mini-text">Assets + Systems · Handover Ready · Owner Runbook</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-top">🧠 Built for owners</div>
+              <div class="mini-text">Clear steps anyone can follow · No confusion</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-top">🔁 Royalty model</div>
+              <div class="mini-text">License + standards + optional ops support</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="glass panel">
+            <div class="panel-title">SSAG Marketplace</div>
+            <div class="panel-sub">Choose a system · License it · Operate & scale</div>
+
+            <div class="panel-grid">
+              <a class="panel-btn" href="#packages">
+                <span class="ico">📦</span>
+                <span>
+                  <strong>Browse Packages</strong>
+                  <em>Starter → Elite builds</em>
+                </span>
+              </a>
+
+              <a class="panel-btn" href="#licenses">
+                <span class="ico">🪪</span>
+                <span>
+                  <strong>Choose a License</strong>
+                  <em>Operator tiers</em>
+                </span>
+              </a>
+              <a class="panel-btn" href="#request">
+                <span class="ico">🧾</span>
+                <span>
+                  <strong>Buy / Request Build</strong>
+                  <em>Get scoped in 24–48h</em>
+                </span>
+              </a>
+
+              <a class="panel-btn" href="#builds">
+                <span class="ico">🧠</span>
+                <span>
+                  <strong>TurnKey Catalog</strong>
+                  <em>Pick a system to run</em>
+                </span>
+              </a>
+            </div>
+            
+        <div class="panel-note">
+              <span class="dot"></span>
+              You receive **logins, assets, SOPs, and a runbook** — not a concept.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section
-      <section id="how" class="section">
-  <div class="container">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step"><span>STEP 1</span><h4>Choose</h4><p>Select a build or request custom.</p></div>
-      <div class="step"><span>STEP 2</span><h4>Build</h4><p>SSAG assembles the system.</p></div>
-      <div class="step"><span>STEP 3</span><h4>Handover</h4><p>You receive assets & runbook.</p></div>
-      <div class="step"><span>STEP 4</span><h4>Operate</h4><p>You run & scale.</p></div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="section">
-  <div class="container">
-    <h2>What SSAG Stands For</h2>
-    <div class="trust">
-      <div>Real systems — not ideas</div>
-      <div>Ownership of assets & access</div>
-      <div>Plain-language runbooks</div>
-      <div>Built to operate immediately</div>
-    </div>
-    <footer>
-  Stealth Systems Automation Group
-</footer>
+    <!-- MODEL -->
+    <section class="section" id="model">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>Simple. Structured. Built like an enterprise system handoff.</p>
+        </div>
+        <!-- MODEL -->
+    <section class="section" id="model">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>Simple. Structured. Built like an enterprise system handoff.</p>
+        </div>
 
+        <div class="steps">
+          <div class="card glass">
+            <div class="card-icon">1️⃣</div>
+            <h3>Choose</h3>
+            <p>Pick a TurnKey build below or request a custom build with your goals and budget.</p>
+          </div>
+          <div class="card glass">
+            <div class="card-icon">2️⃣</div>
+            <h3>Build + Package</h3>
+            <p>SSAG assembles your business system: site, flows, templates, automations, and structure.</p>
+          </div>
+
+          <div class="card glass">
+            <div class="card-icon">3️⃣</div>
+            <h3>Handover</h3>
+            <p>You receive access, assets, and an owner runbook explaining exactly what to do.</p>
+          </div>
+
+          <div class="card glass">
+            <div class="card-icon">4️⃣</div>
+            <h3>Operate + Scale</h3>
+            <p>Run the system. Optional SSAG standards + support keeps it consistent and scalable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PACKAGES -->
+    <section class="section" id="packages">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Packages</h2>
+          <p>These are the build levels. Each package includes a clean handoff + owner guide.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="price-card glass">
+            <div class="tag">Starter</div>
+            <h3>Launch Stack</h3>
+            <div class="price">$499<span>/ build</span></div>
+            <ul>
+              <li>✅ Brand + landing page</li>
+              <li>✅ Lead capture + email template</li>
+              <li>✅ Basic owner checklist</li>
+              <li>✅ “What to do next” runbook</li>
+            </ul>
+            <a class="btn btn-ghost w100" href="#request">Request Starter</a>
+          </div>
+          <div class="price-card glass">
+            <div class="tag">Growth</div>
+            <h3>System Build</h3>
+            <div class="price">$1,500<span>/ build</span></div>
+            <ul>
+              <li>✅ Full website or store</li>
+              <li>✅ Core workflows (intake, follow-up)</li>
+              <li>✅ Templates + SOPs</li>
+              <li>✅ Setup + handoff guide</li>
+            </ul>
+            <a class="btn btn-primary w100" href="#request">Request System Build</a>
+          </div>
+
+          <div class="price-card glass glow">
+            <div class="tag tag-elite">Elite</div>
+            <h3>Automation Enterprise</h3>
+            <div class="price">$3,500<span>/ build</span></div>
+            <ul>
+              <li>✅ Full website or store</li>
+              <li>✅ Core workflows (intake, follow-up)</li>
+              <li>✅ Templates + SOPs</li>
+              <li>✅ Setup + handoff guide</li>
+            </ul>
+            <a class="btn btn-primary w100" href="#request">Request System Build</a>
+          </div>
+
+          <div class="price-card glass glow">
+            <div class="tag tag-elite">Elite</div>
+            <h3>Automation Enterprise</h3>
+            <div class="price">$3,500<span>/ build</span></div>
+            <ul>
+              <li>✅ Automations + dashboards</li>
+              <li>✅ Multi-step follow-up flows</li>
+              <li>✅ Operator runbook (step-by-step)</li>
+              <li>✅ Standards + scale-ready structure</li>
+            </ul>
+            <a class="btn btn-primary w100" href="#request">Request Elite Build</a>
+          </div>
+        </div>
+        <a class="btn btn-primary w100" href="#request">Request Elite Build</a>
+          </div>
+        </div>
+
+        <div class="fineprint">
+          Pricing can be adjusted depending on complexity, integrations, and build scope.
+        </div>
+      </div>
+    </section>
+
+    <!-- TURNKEY BUILDS -->
+    <section class="section" id="builds">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>TurnKey Builds Catalog</h2>
+          <p>Pick a system you want to run. Each one can be packaged at Starter, Growth, or Elite level.</p>
+        </div>
+        <div class="build-grid">
+          <article class="build glass">
+            <div class="build-top">
+              <span class="build-ico">🛒</span>
+              <h3>E-Commerce Micro-Brand</h3>
+            </div>
+            <p>Store + product structure + checkout flow + follow-up system.</p>
+            <div class="build-meta">
+              <span class="chip">Shop</span><span class="chip">Email</span><span class="chip">Templates</span>
+            </div>
+            <div class="build-actions">
+              <a class="btn btn-ghost" href="#request">Request</a>
+              <a class="btn btn-primary" href="#licenses">License</a>
+            </div>
+          </article>
+          <article class="build glass">
+            <div class="build-top">
+              <span class="build-ico">🏢</span>
+              <h3>Local Service System</h3>
+            </div>
+            <p>Lead intake + booking + job workflow + review follow-up.</p>
+            <div class="build-meta">
+              <span class="chip">Booking</span><span class="chip">CRM</span><span class="chip">SOP</span>
+            </div>
+            <div class="build-actions">
+              <a class="btn btn-ghost" href="#request">Request</a>
+              <a class="btn btn-primary" href="#licenses">License</a>
+            </div>
+          </article>
+          <article class="build glass">
+            <div class="build-top">
+              <span class="build-ico">🎥</span>
+              <h3>Faceless Content Channel</h3>
+            </div>
+            <p>Brand kit + content workflow + posting checklist + templates.</p>
+            <div class="build-meta">
+              <span class="chip">YouTube</span><span class="chip">Scripts</span><span class="chip">Workflow</span>
+            </div>
+            <div class="build-actions">
+              <a class="btn btn-ghost" href="#request">Request</a>
+              <a class="btn btn-primary" href="#licenses">License</a>
+            </div>
+          </article>
+          <article class="build glass">
+            <div class="build-top">
+              <span class="build-ico">📄</span>
+              <h3>Lead Gen + Sales Pipeline</h3>
+            </div>
+            <p>Landing pages + intake + follow-up + pipeline stages + scripts.</p>
+            <div class="build-meta">
+              <span class="chip">Pipeline</span><span class="chip">Follow-up</span><span class="chip">Scripts</span>
+            </div>
+            <div class="build-actions">
+              <a class="btn btn-ghost" href="#request">Request</a>
+              <a class="btn btn-primary" href="#licenses">License</a>
+            </div>
+          </article>
+          <article class="build glass">
+            <div class="build-top">
+              <span class="build-ico">🤝</span>
+              <h3>Partnership / Referral System</h3>
+            </div>
+            <p>Partner onboarding + referral tracking + payout workflow + templates.</p>
+            <div class="build-meta">
+              <span class="chip">Partners</span><span class="chip">Tracking</span><span class="chip">Payouts</span>
+            </div>
+            <div class="build-actions">
+              <a class="btn btn-ghost" href="#request">Request</a>
+              <a class="btn btn-primary" href="#licenses">License</a>
+            </div>
+          </article>
+          <article class="build glass">
+            <div class="build-top">
+              <span class="build-ico">🧠</span>
+              <h3>Custom SSAG Build</h3>
+            </div>
+            <p>You describe the outcome. SSAG scopes, builds, and delivers the system.</p>
+            <div class="build-meta">
+              <span class="chip">Custom</span><span class="chip">Enterprise</span><span class="chip">Runbook</span>
+            </div>
+            <div class="build-actions">
+              <a class="btn btn-ghost" href="#request">Request</a>
+              <a class="btn btn-primary" href="#request">Start</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- LICENSES -->
+    <section class="section" id="licenses">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>License tiers</h2>
+          <p>Choose how you operate under SSAG standards. (You can change tiers later.)</p>
+        </div>
+
+        <div class="license-grid">
+          <div class="license glass">
+            <div class="license-top">
+              <span class="license-ico">🧑‍💻</span>
+              <h3>Operator</h3>
+            </div>
+            <p class="muted">For one owner running one system.</p>
+            <ul>
+              <li>✅ One system license</li>
+              <li>✅ Owner runbook + SOPs</li>
+              <li>✅ Standard compliance checklist</li>
+            </ul>
+            <a class="btn btn-ghost w100" href="#request">Choose Operator</a>
+          </div>
+          <a class="btn btn-ghost w100" href="#request">Choose Operator</a>
+          </div>
+
+          <div class="license glass glow">
+            <div class="license-top">
+              <span class="license-ico">🧩</span>
+              <h3>Founding Operator</h3>
+            </div>
+            <p class="muted">Best for first serious launch + proof.</p>
+            <ul>
+              <li>✅ Priority build delivery</li>
+              <li>✅ Enhanced automation options</li>
+              <li>✅ Royalties + standards package</li>
+            </ul>
+            <a class="btn btn-primary w100" href="#request">Choose Founding</a>
+          </div>
+          <div class="license glass">
+            <div class="license-top">
+              <span class="license-ico">🏛️</span>
+              <h3>Division Partner</h3>
+            </div>
+            <p class="muted">For scaling multiple systems under SSAG.</p>
+            <ul>
+              <li>✅ Multiple system licenses</li>
+              <li>✅ Ops standards + templates library</li>
+              <li>✅ Optional support / oversight</li>
+            </ul>
+            <a class="btn btn-ghost w100" href="#request">Choose Partner</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- REQUEST -->
+    <section class="section" id="request">
+      <div class="wrap">
+        <div class="request glass">
+          <div>
+            <h2>Buy / Request Build</h2>
+            <p class="muted">
+              This is where you route people to pay or contact you. If you don’t have payments wired yet,
+              this still looks enterprise because it’s structured.
+            </p>
+
+            <div class="request-actions">
+              <!-- Replace # with your real links later (PayPal / Stripe / Form) -->
+              <a class="btn btn-primary" href="#" onclick="alert('Replace this link with your payment link (PayPal/Stripe).'); return false;">
+                💳 Buy Now (Link)
+              </a>
+              <a class="btn btn-ghost" href="#" onclick="alert('Replace this link with your request form link.'); return false;">
+                🧾 Request Custom Build (Link)
+              </a>
+            </div>
+            <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Fast answers. No fluff.</p>
+        </div>
+
+        <div class="faq">
+          <details class="glass">
+            <summary>Do I own the business system after purchase?</summary>
+            <div class="faq-body">
+              You receive the assets + access + runbook. If it’s licensed, you operate under SSAG standards per your tier.
+            </div>
+          </details>
+          <div class="faq">
+          <details class="glass">
+            <summary>Do I own the business system after purchase?</summary>
+            <div class="faq-body">
+              You receive the assets + access + runbook. If it’s licensed, you operate under SSAG standards per your tier.
+            </div>
+          </details>
+
+          <details class="glass">
+            <summary>How fast can a build be delivered?</summary>
+            <div class="faq-body">
+              Depends on scope. Starter is fastest, Elite takes longer due to automations and structure.
+            </div>
+          </details>
+
+          <details class="glass">
+            <summary>Is this just a website?</summary>
+            <div class="faq-body">
+              No. It’s a full system: assets, workflows, templates, runbook, and (when included) automations.
+            </div>
+          </details>
+            <details class="glass">
+            <summary>Can I request something not listed?</summary>
+            <div class="faq-body">
+              Yes. Use “Request Custom Build” and describe what you want the system to do.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-title">SSAG Marketplace</div>
+          <div class="footer-sub">TurnKey Systems · Licensing · Royalties · Automation</div>
+        </div>
+        <!-- FOOTER -->
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-title">SSAG Marketplace</div>
+          <div class="footer-sub">TurnKey Systems · Licensing · Royalties · Automation</div>
+        </div>
+        <div class="footer-links">
+          <a href="#builds">Catalog</a>
+          <a href="#packages">Packages</a>
+          <a href="#licenses">Licenses</a>
+          <a href="#request">Buy / Request</a>
+        </div>
+      </div>
+    </footer>
+      </main>
+        <script>
+    // close drawer on scroll/tap outside (simple)
+    document.addEventListener('click', (e) => {
+      if (!document.body.classList.contains('nav-open')) return;
+      const header = document.querySelector('.top');
+      if (!header.contains(e.target)) document.body.classList.remove('nav-open');
+    });
+  </script>
 </body>
-  </html>
+      </html>
+            
