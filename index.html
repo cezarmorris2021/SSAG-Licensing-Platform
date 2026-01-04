@@ -1,520 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SSAG Marketplace | Stealth Systems Automation Group</title>
-  <meta name="description" content="SSAG builds and licenses turnkey business systems with standards, automation, and operator runbooks. Real systems. Real ownership. Real execution." />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSAG Marketplace</title>
+  <meta name="description" content="SSAG Enterprise Marketplace — Systems Ownership, Licensing Revenue, and Deployable Enterprise Divisions." />
+
+  <style>
+    :root{
+      --bg:#070A0F;
+      --panel:#0B1120;
+      --panel2:#0A0F1B;
+      --text:#EAF0FF;
+      --muted:#A8B3D6;
+      --line:rgba(255,255,255,.08);
+
+      /* keep “same design vibe” with premium accents */
+      --accentA:#ff4d2e; /* reddish-orange */
+      --accentB:#6FE7FF; /* ice blue */
+      --accentC:#36d399; /* green-blue */
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 600px at 15% 0%, rgba(111,231,255,.16), transparent 60%),
+        radial-gradient(900px 600px at 85% 0%, rgba(255,77,46,.14), transparent 60%),
+        radial-gradient(700px 420px at 55% 65%, rgba(54,211,153,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1120px; margin:0 auto; padding:0 18px}
+
+    /* Top bar / brand */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,15,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 260px;
+    }
+    .mark{
+      width:42px;height:42px;border-radius:14px;
+      background:
+        linear-gradient(135deg, rgba(255,77,46,.95), rgba(111,231,255,.95));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800;
+      letter-spacing:.5px;
+    }
+    .brand h1{
+      font-size:14px;
+      margin:0;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      color:rgba(234,240,255,.92);
+    }
+    .brand .sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    nav{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      font-size:13px;
+      color:rgba(234,240,255,.82);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition: all .18s ease;
+    }
+    nav a:hover{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      padding:56px 0 26px;
+    }
+    .heroCard{
+      border-radius: var(--radius2);
+      padding:28px 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(550px 260px at 12% 10%, rgba(111,231,255,.22), transparent 60%),
+        radial-gradient(520px 240px at 90% 12%, rgba(255,77,46,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .heroInner{position:relative}
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:13px;
+      color:rgba(234,240,255,.86);
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      padding:8px 12px;
+      border-radius:999px;
+      margin-bottom:14px;
+    }
+    .kicker .dot{
+      width:9px;height:9px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accentA), var(--accentB));
+      box-shadow: 0 0 0 4px rgba(255,255,255,.05);
+    }
+    .hero h2{
+      font-size:34px;
+      line-height:1.12;
+      margin:10px 0 10px;
+      letter-spacing:-.6px;
+    }
+    .hero p{
+      margin:0;
+      color:rgba(234,240,255,.82);
+      max-width: 860px;
+    }
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      transition: all .18s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
+    .btnPrimary{
+      border:none;
+      background: linear-gradient(135deg, var(--accentA), var(--accentB));
+      color:#061018;
+      font-weight:700;
+    }
+    .btnPrimary:hover{filter:brightness(1.06)}
+    .btnGhost{
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Section base */
+    section{
+      padding:30px 0;
+    }
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .sectionTitle h3{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-.2px;
+    }
+    .sectionTitle .hint{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .panel{
+      border-radius: var(--radius2);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      box-shadow: 0 16px 48px rgba(0,0,0,.35);
+      padding:18px;
+    }
+
+    /* Feature grid (why different) */
+    .grid4{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .card{
+      border-radius: var(--radius);
+      background: rgba(7,10,15,.35);
+      border:1px solid rgba(255,255,255,.08);
+      padding:14px;
+      min-height: 120px;
+    }
+    .card h4{margin:0 0 8px; font-size:14px}
+    .card p{margin:0; color:rgba(234,240,255,.78); font-size:13px}
+
+    /* Divisions grid */
+    .divisionGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .division{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.09);
+      background:
+        radial-gradient(500px 240px at 8% 0%, rgba(111,231,255,.10), transparent 60%),
+        radial-gradient(500px 240px at 92% 0%, rgba(255,77,46,.10), transparent 60%),
+        rgba(7,10,15,.35);
+      padding:16px 16px 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .division:after{
+      content:"";
+      position:absolute; left:0; right:0; bottom:0; height:2px;
+      background: linear-gradient(90deg, transparent, rgba(111,231,255,.65), rgba(255,77,46,.65), transparent);
+      opacity:.5;
+    }
+    .division h4{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.1px;
+    }
+    .division p{
+      margin:0;
+      color:rgba(234,240,255,.78);
+      font-size:13px;
+      max-width: 46ch;
+    }
+
+    /* Engagement list */
+    .engagementList{
+      margin:10px 0 0;
+      padding-left: 18px;
+      color:rgba(234,240,255,.84);
+    }
+    .engagementList li{margin:8px 0}
+    .muted{color:var(--muted)}
+
+    /* Licensing cards */
+    .licGrid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+
+    /* Footer */
+    footer{
+      padding:26px 0 34px;
+      border-top:1px solid var(--line);
+      margin-top: 12px;
+      color:rgba(234,240,255,.72);
+      font-size:13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid4{grid-template-columns: 1fr 1fr}
+      .divisionGrid{grid-template-columns: 1fr 1fr}
+      .licGrid{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+    }
+    @media (max-width: 640px){
+      .hero h2{font-size:28px}
+      nav{justify-content:flex-start}
+      .grid4, .divisionGrid{grid-template-columns: 1fr}
+      .topbar{align-items:flex-start; flex-direction:column}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Subtle pinstripe + glow frame -->
-  <div class="page-frame" aria-hidden="true"></div>
 
-  <!-- Top Nav -->
-  <header class="topbar" id="top">
-    <div class="container topbar-inner">
-      <a class="brand" href="./" aria-label="SSAG Marketplace Home">
-        <span class="brand-mark">SS</span>
-        <span class="brand-text">
-          <span class="brand-title">SSAG <span class="brand-split">|</span> Stealth Systems Automation Group</span>
-          <span class="brand-sub">Turnkey business systems · Licensing · Royalties · Automation</span>
-        </span>
-      </a>
+<header>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">SS</div>
+        <div>
+          <h1>SSAG STEALTH SYSTEMS AUTOMATION GROUP</h1>
+          <div class="sub">Umbrella Enterprise • Systems Ownership • Licensing Revenue</div>
+        </div>
+      </div>
 
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav" id="nav" aria-label="Primary">
+      <nav>
         <a href="#about">About</a>
         <a href="#model">Model</a>
-        <a href="#what-we-build">What We Build</a>
-        <a href="#turnkey-builds">TurnKey Builds</a>
-        <a href="#packages">Packages</a>
+        <a href="#divisions">Enterprise Divisions</a>
         <a href="#licenses">Licenses</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn-ghost" href="#apply">Apply to SSAG</a>
+        <a href="#apply">Apply to SSAG</a>
       </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Hero -->
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-left">
-          <div class="pill-row">
-            <span class="pill">
-              <span class="pill-icon">⚙️</span>
-              <span>SSAG Umbrella Enterprise</span>
-            </span>
-            <span class="pill pill-warn">
-              <span class="pill-icon">◆</span>
-              <span>Signature: Every build pays monthly royalties</span>
-            </span>
-          </div>
+<main>
 
-          <h1 class="hero-title">
-            We build & license <span class="accent-green">turnkey</span>
-            <span class="accent-ice">business systems</span> that pay
-            <span class="accent-orange">royalties</span> back to SSAG.
-          </h1>
-
-          <p class="hero-lead">
-            SSAG designs, builds, and deploys complete business systems. Every system runs under SSAG standards and
-            pays monthly royalties and service fees. We don’t sell websites — we build machines that pay every month.
-          </p>
-
-          <div class="hero-badges">
-            <span class="badge"><span class="b-ic">🏛️</span> Umbrella enterprise · Licensing & royalties</span>
-            <span class="badge"><span class="b-ic">🧱</span> Turnkey systems: e-com, service, content, hybrid</span>
-            <span class="badge"><span class="b-ic">🛰️</span> Automation, documentation, ongoing support</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#apply">Apply to become an SSAG Partner Business</a>
-            <a class="btn btn-dark" href="#model">How the SSAG model works</a>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-card glass">
-            <h3>What you receive (handover-ready)</h3>
-            <ul class="checklist">
-              <li><span class="check">✓</span> Assets + logins + access instructions</li>
-              <li><span class="check">✓</span> SOPs + step-by-step operator runbook</li>
-              <li><span class="check">✓</span> Workflow map (how work moves through the system)</li>
-              <li><span class="check">✓</span> Templates (sales, support, operations)</li>
-              <li><span class="check">✓</span> Automation-ready structure + optional integrations</li>
-            </ul>
-            <div class="hero-mini">
-              <div class="mini">
-                <div class="mini-top">Operator clarity</div>
-                <div class="mini-big">No confusion</div>
-              </div>
-              <div class="mini">
-                <div class="mini-top">Build standard</div>
-                <div class="mini-big">SSAG spec</div>
-              </div>
-              <div class="mini">
-                <div class="mini-top">Ongoing</div>
-                <div class="mini-big">Royalties</div>
-              </div>
-            </div>
-            <div class="hero-card-actions">
-              <a class="link" href="#turnkey-builds">View TurnKey Builds →</a>
-              <a class="link" href="#packages">See Packages →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head">
-          <h2>About SSAG Marketplace</h2>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="heroCard">
+        <div class="heroInner">
+          <div class="kicker"><span class="dot"></span> ⚙️ SSAG Umbrella Enterprise · Signature: Every build pays monthly royalties</div>
+          <h2>We build & license turnkey business systems<br/>that pay royalties back to SSAG.</h2>
           <p>
-            SSAG Marketplace is the delivery arm: where partner operators select a system, receive the build, and run it
-            under SSAG standards. This is an enterprise model designed for repeatability, quality control, and scale.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card glass">
-            <h3><span class="ic">🧬</span> Identity</h3>
-            <p>SSAG is the umbrella enterprise. Everything we build under SSAG pays SSAG.</p>
-          </article>
-          <article class="card glass">
-            <h3><span class="ic">🧾</span> Signature</h3>
-            <p>Every build = royalties + service fees. The signature never changes.</p>
-          </article>
-          <article class="card glass">
-            <h3><span class="ic">🛡️</span> Standards</h3>
-            <p>We build systems, not sites. Structure, automation, documentation, and operator clarity.</p>
-          </article>
-        </div>
-
-        <div class="callout">
-          <div class="callout-title">SSAG stands apart because:</div>
-          <div class="callout-body">
-            <div class="callout-item"><span class="dot green"></span> We deliver complete systems with runbooks (not ideas).</div>
-            <div class="callout-item"><span class="dot ice"></span> Everything follows standards so systems are repeatable.</div>
-            <div class="callout-item"><span class="dot orange"></span> Royalties align incentives: quality + long-term support.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Model -->
-    <section class="section" id="model">
-      <div class="container">
-        <div class="section-head">
-          <h2>The SSAG Model</h2>
-          <p>Simple. Structured. Built like an enterprise handoff.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step glass">
-            <div class="step-num">01</div>
-            <h3>Choose</h3>
-            <p>Pick a TurnKey build below or request a custom build with your goals and budget.</p>
-          </div>
-          <div class="step glass">
-            <div class="step-num">02</div>
-            <h3>Build + Package</h3>
-            <p>We assemble your business system: site, workflows, templates, operations, and automation-ready structure.</p>
-          </div>
-          <div class="step glass">
-            <div class="step-num">03</div>
-            <h3>Handover</h3>
-            <p>You receive assets, access, SOPs, and an operator runbook explaining exactly what to do.</p>
-          </div>
-          <div class="step glass">
-            <div class="step-num">04</div>
-            <h3>Operate + Scale</h3>
-            <p>You run it. SSAG maintains standards, optional support, and continuous improvement tiers.</p>
-          </div>
-        </div>
-
-        <div class="dual-cta">
-          <a class="btn btn-primary" href="#turnkey-builds">Browse TurnKey Builds</a>
-          <a class="btn btn-ghost" href="#apply">Request a scoped build (24–48h)</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- What We Build -->
-    <section class="section" id="what-we-build">
-      <div class="container">
-        <div class="section-head">
-          <h2>What We Build</h2>
-          <p>SSAG systems are engineered as an operating machine: sales → fulfillment → support → reporting.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card glass">
-            <h3><span class="ic">🧱</span> Core System Blocks</h3>
-            <ul class="bullets">
-              <li>Brand + offer architecture (what you sell, to who, and why it wins)</li>
-              <li>Customer acquisition flow (lead capture, booking, checkout, follow-up)</li>
-              <li>Operations workflow (how work moves through the system)</li>
-              <li>Templates + SOPs (sales, support, fulfillment, admin)</li>
-              <li>Owner runbook (step-by-step playbook for daily operation)</li>
-            </ul>
-          </article>
-
-          <article class="card glass">
-            <h3><span class="ic">🛰️</span> Optional Integrations</h3>
-            <ul class="bullets">
-              <li>Email/SMS follow-up sequences</li>
-              <li>Automations (forms → CRM → tasks → notifications)</li>
-              <li>Booking + calendar flows</li>
-              <li>Payment & invoice flows (where applicable)</li>
-              <li>Support workflows (ticketing, FAQs, scripts)</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="fineprint">
-          Note: SSAG Marketplace pages are public-facing. No internal notes appear here — only customer-ready copy.
-        </div>
-      </div>
-    </section>
-    <!-- TurnKey Builds -->
-    <section class="section" id="turnkey-builds">
-      <div class="container">
-        <div class="section-head">
-          <h2>TurnKey Businesses Available</h2>
-          <p>Pick a category build — or request a scoped custom system. (More builds can be added any time.)</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card glass">
-            <div class="card-top">
-              <h3><span class="ic">🛒</span> E-Commerce Micro-Brand</h3>
-              <span class="tag tag-ice">Store system</span>
-            </div>
-            <ul class="bullets">
-              <li>Storefront structure + product catalog framework</li>
-              <li>Order + fulfillment workflow</li>
-              <li>Customer follow-up templates</li>
-              <li>Owner runbook + SOPs</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-mini btn-primary" href="#apply">Request this build</a>
-              <a class="btn btn-mini btn-ghost" href="#packages">See packages</a>
-            </div>
-          </article>
-
-          <article class="card glass">
-            <div class="card-top">
-              <h3><span class="ic">🏗️</span> Local Service System</h3>
-              <span class="tag tag-green">Service system</span>
-            </div>
-            <ul class="bullets">
-              <li>Landing + booking flow</li>
-              <li>Lead → schedule → complete → collect workflow</li>
-              <li>Scripts + quotes + service templates</li>
-              <li>Operator runbook</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-mini btn-primary" href="#apply">Request this build</a>
-              <a class="btn btn-mini btn-ghost" href="#licenses">License tiers</a>
-            </div>
-          </article>
-
-          <article class="card glass">
-            <div class="card-top">
-              <h3><span class="ic">🎥</span> Faceless Content Channel</h3>
-              <span class="tag tag-orange">Content system</span>
-            </div>
-            <ul class="bullets">
-              <li>Channel brand kit + content structure</li>
-              <li>Repeatable production workflow</li>
-              <li>Publishing + repurpose checklist</li>
-              <li>Operator runbook</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-mini btn-primary" href="#apply">Request this build</a>
-              <a class="btn btn-mini btn-ghost" href="#model">How it works</a>
-            </div>
-          </article>
-
-          <article class="card glass">
-            <div class="card-top">
-              <h3><span class="ic">🧩</span> Hybrid Revenue System</h3>
-              <span class="tag tag-ice">Multi-stream</span>
-            </div>
-            <ul class="bullets">
-              <li>E-com + service + content layered model</li>
-              <li>Shared lead capture + routing</li>
-              <li>Central SOP library</li>
-              <li>Owner runbook</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-mini btn-primary" href="#apply">Request this build</a>
-              <a class="btn btn-mini btn-ghost" href="#packages">Packages</a>
-            </div>
-          </article>
-
-          <article class="card glass">
-            <div class="card-top">
-              <h3><span class="ic">📦</span> Digital Products System</h3>
-              <span class="tag tag-green">Digital</span>
-            </div>
-            <ul class="bullets">
-              <li>Offer + delivery pipeline</li>
-              <li>Checkout + access flow</li>
-              <li>Support scripts + FAQ structure</li>
-              <li>Operator runbook</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-mini btn-primary" href="#apply">Request this build</a>
-              <a class="btn btn-mini btn-ghost" href="#licenses">License tiers</a>
-            </div>
-          </article>
-
-          <article class="card glass">
-            <div class="card-top">
-              <h3><span class="ic">🧠</span> Custom SSAG System</h3>
-              <span class="tag tag-orange">Scoped build</span>
-            </div>
-            <ul class="bullets">
-              <li>We scope in 24–48 hours</li>
-              <li>Build spec + deliverables list</li>
-              <li>Standards + royalties model</li>
-              <li>Handover plan</li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-mini btn-primary" href="#apply">Request a scope</a>
-              <a class="btn btn-mini btn-ghost" href="#faq">FAQ</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Packages -->
-    <section class="section" id="packages">
-      <div class="container">
-        <div class="section-head">
-          <h2>Packages</h2>
-          <p>Choose the level of build depth and support structure you want around your system.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card glass price">
-            <div class="price-head">
-              <h3>Starter Build</h3>
-              <span class="tag tag-green">Fast launch</span>
-            </div>
-            <ul class="bullets">
-              <li>System foundation + core workflows</li>
-              <li>Essential templates + SOP set</li>
-              <li>Owner runbook (core)</li>
-              <li>Handover checklist</li>
-            </ul>
-            <div class="price-cta">
-              <a class="btn btn-primary" href="#apply">Choose Starter</a>
-            </div>
-          </article>
-
-          <article class="card glass price featured">
-            <div class="price-head">
-              <h3>Operator Build</h3>
-              <span class="tag tag-ice">Most chosen</span>
-            </div>
-            <ul class="bullets">
-              <li>Full system build + refined workflows</li>
-              <li>Expanded SOP library + scripts</li>
-              <li>Automation-ready structure (optional integrations)</li>
-              <li>Owner runbook (full) + operating cadence</li>
-            </ul>
-            <div class="price-cta">
-              <a class="btn btn-primary" href="#apply">Choose Operator</a>
-            </div>
-          </article>
-
-          <article class="card glass price">
-            <div class="price-head">
-              <h3>Elite System</h3>
-              <span class="tag tag-orange">Enterprise tier</span>
-            </div>
-            <ul class="bullets">
-              <li>Multi-stream model + routing</li>
-              <li>Quality control + standards enforcement</li>
-              <li>Advanced support structure</li>
-              <li>Scale-ready documentation</li>
-            </ul>
-            <div class="price-cta">
-              <a class="btn btn-primary" href="#apply">Choose Elite</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-    <!-- Licenses -->
-    <section class="section" id="licenses">
-      <div class="container">
-        <div class="section-head">
-          <h2>Licenses</h2>
-          <p>Licensing defines standards, brand alignment, handover requirements, and ongoing royalties/service structure.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card glass">
-            <h3><span class="ic">🔑</span> Operator License</h3>
-            <ul class="bullets">
-              <li>Operate one system under SSAG standards</li>
-              <li>Handover package + operator runbook required</li>
-              <li>Royalties/service structure applies</li>
-            </ul>
-            <a class="btn btn-primary" href="#apply">Apply for Operator</a>
-          </article>
-
-          <article class="card glass">
-            <h3><span class="ic">👑</span> Elite Operator License</h3>
-            <ul class="bullets">
-              <li>Operate multiple systems</li>
-              <li>Higher standards + structured reporting</li>
-              <li>Priority support tiers (if selected)</li>
-            </ul>
-            <a class="btn btn-primary" href="#apply">Apply for Elite</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <h2>FAQ</h2>
-          <p>Clear answers. No confusion.</p>
-        </div>
-
-        <div class="faq">
-          <details class="faq-item glass">
-            <summary>What am I buying?</summary>
-            <div class="faq-body">A complete operating system: assets, workflows, templates, SOPs, and an operator runbook — handover ready.</div>
-          </details>
-
-          <details class="faq-item glass">
-            <summary>Do you provide instructions?</summary>
-            <div class="faq-body">Yes. Every system includes SOPs plus a step-by-step operator runbook.</div>
-          </details>
-
-          <details class="faq-item glass">
-            <summary>Can I request a custom build?</summary>
-            <div class="faq-body">Yes. Apply below and request a scope. We’ll define the system, deliverables, and package level.</div>
-          </details>
-
-          <details class="faq-item glass">
-            <summary>Why does SSAG use royalties?</summary>
-            <div class="faq-body">Royalties align incentives: SSAG maintains standards, supports quality, and improves systems over time.</div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Apply -->
-    <section class="section" id="apply">
-      <div class="container">
-        <div class="apply glass">
-          <h2>Apply to SSAG</h2>
-          <p class="apply-lead">
-            Request a TurnKey build or a custom scoped system. You’ll receive a clear plan, deliverables, and next steps.
+            SSAG is an umbrella enterprise that designs, builds, deploys, and licenses complete business systems.
+            We don’t sell websites — we build operational machines with real assets, workflows, documentation,
+            and enterprise oversight.
           </p>
 
-          <div class="apply-actions">
-            <a class="btn btn-primary" href="mailto:cezarmorris2021@gmail.com?subject=SSAG%20Marketplace%20Application&body=Name:%0ARequested%20Build:%0APackage%20Level:%0ATimeline:%0ABudget%20Range:%0ANotes:">
-              Email Application
-            </a>
-            <a class="btn btn-dark" href="#top">Back to top</a>
-          </div>
-
-          <div class="apply-note">
-            Public-facing only. No internal conversations or notes are displayed on this page.
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="#divisions">View Enterprise Divisions</a>
+            <a class="btn btnGhost" href="#model">How the SSAG Model Works</a>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <div class="footer-title">SSAG Marketplace</div>
-        <div class="footer-sub">Stealth Systems Automation Group</div>
-      </div>
-      <div class="footer-right">
-        <a class="footer-link" href="#about">About</a>
-        <a class="footer-link" href="#turnkey-builds">TurnKey Builds</a>
-        <a class="footer-link" href="#licenses">Licenses</a>
-        <a class="footer-link" href="#apply">Apply</a>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // Mobile menu toggle (simple, reliable)
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    toggle?.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="sectionTitle">
+        <h3>About SSAG</h3>
+        <div class="hint">Enterprise posture • Not a storefront</div>
+      </div>
+      <div class="panel">
+        <p>
+          SSAG is a systems-owning enterprise. The company’s value is built on ownership of documented,
+          deployable business architectures that can be licensed to qualified operators. SSAG retains
+          the intellectual property, standards, and oversight authority while operators execute day-to-day operations.
+        </p>
+        <p class="muted">
+          This structure supports scalable growth without dependence on advertising, founder labor,
+          or traditional service delivery.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    // Close menu after tap
-    nav?.querySelectorAll('a')?.forEach(a => {
-      a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle?.setAttribute('aria-expanded', 'false');
-      });
-    });
-  </script>
+  <!-- MODEL / WHY DIFFERENT -->
+  <section id="model">
+    <div class="container">
+      <div class="sectionTitle">
+        <h3>Why SSAG Is Different</h3>
+        <div class="hint">Systems → licensing → oversight</div>
+      </div>
+
+      <div class="grid4">
+        <div class="card">
+          <h4>Umbrella Enterprise</h4>
+          <p>SSAG owns the standards, systems, and licensing structure. Operators deploy within enterprise rules.</p>
+        </div>
+        <div class="card">
+          <h4>Systems — Not Concepts</h4>
+          <p>Real assets: workflows, SOPs, onboarding, operator runbooks, and deployment packages.</p>
+        </div>
+        <div class="card">
+          <h4>Royalty-Based Model</h4>
+          <p>Every deployment operates under license. Monthly royalties and fees flow back to SSAG by design.</p>
+        </div>
+        <div class="card">
+          <h4>Selective by Design</h4>
+          <p>SSAG qualifies operators to protect system integrity, performance, and brand standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE DIVISIONS -->
+  <section id="divisions">
+    <div class="container">
+      <div class="sectionTitle">
+        <h3>Enterprise Divisions</h3>
+        <div class="hint">2–3 lines max each • enterprise-functional structure</div>
+      </div>
+
+      <div class="divisionGrid">
+
+        <div class="division">
+          <h4>Systems Engineering Division</h4>
+          <p>Designs and maintains SSAG’s core business architectures, workflows, and operating blueprints.</p>
+        </div>
+
+        <div class="division">
+          <h4>Digital Platforms Division</h4>
+          <p>Oversees internal platforms and portals used for deployment, operator access, and system interfaces.</p>
+        </div>
+
+        <div class="division">
+          <h4>Monetization & Packaging Division</h4>
+          <p>Structures licensing packages, royalty frameworks, and monetization pathways across all systems.</p>
+        </div>
+
+        <div class="division">
+          <h4>Licensing & Partnerships Division</h4>
+          <p>Manages operator licensing, partner relationships, territory logic, and structured enterprise access.</p>
+        </div>
+
+        <div class="division">
+          <h4>Advertising & Growth Systems Division</h4>
+          <p>Builds scalable growth frameworks operators can deploy without SSAG relying on central ad spend.</p>
+        </div>
+
+        <div class="division">
+          <h4>Automation & Operations Division</h4>
+          <p>Develops automation logic and operating efficiencies that reduce execution risk and improve consistency.</p>
+        </div>
+
+        <div class="division">
+          <h4>Documentation & Compliance Division</h4>
+          <p>Controls SOP libraries, compliance frameworks, audit readiness, and documentation governance.</p>
+        </div>
+
+        <div class="division">
+          <h4>Asset Incubation Division</h4>
+          <p>Develops and tests new systems internally before enterprise-wide deployment or operator licensing.</p>
+        </div>
+
+        <div class="division">
+          <h4>Business Consulting Division</h4>
+          <p>Provides strategic system integration support for operators and aligned organizations when approved.</p>
+        </div>
+
+        <div class="division">
+          <h4>Authorized Administrative Services Division</h4>
+          <p>Manages approved administrative and compliance-based operational systems within SSAG standards.</p>
+        </div>
+
+        <div class="division">
+          <h4>SSAG Licensing & Oversight Authority</h4>
+          <p>Retains governance over system use, brand standards, compliance enforcement, and revocation authority.</p>
+        </div>
+
+        <div class="division">
+          <h4>Strategy, Valuation & Exit Division</h4>
+          <p>Oversees valuation logic, capital strategy, enterprise defensibility, and long-term exit planning.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LICENSES -->
+  <section id="licenses">
+    <div class="container">
+      <div class="sectionTitle">
+        <h3>Licensing Structure</h3>
+        <div class="hint">No public pricing • qualification required</div>
+      </div>
+
+      <div class="licGrid">
+        <div class="panel">
+          <h4 style="margin:0 0 8px;">Operator License</h4>
+          <p class="muted" style="margin:0 0 10px;">
+            One system · SSAG standards · monthly royalty · onboarding + runbook included.
+          </p>
+          <p style="margin:0;">
+            Designed for operators who want a single deployable system with documented execution and SSAG oversight.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h4 style="margin:0 0 8px;">Elite Operator License</h4>
+          <p class="muted" style="margin:0 0 10px;">
+            Multiple systems · priority builds · advanced support · enterprise-level access.
+          </p>
+          <p style="margin:0;">
+            Designed for operators seeking multi-system deployment under SSAG governance and higher enterprise access.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section id="apply">
+    <div class="container">
+      <div class="sectionTitle">
+        <h3>Apply to Become an SSAG Partner</h3>
+        <div class="hint">Gate-based access • selective by design</div>
+      </div>
+
+      <div class="panel">
+        <p style="margin-top:0;">
+          SSAG is building its internal portfolio and select partners. External brands are not accepted without approval.
+          Engagement occurs through structured inquiry and qualification.
+        </p>
+
+        <ul class="engagementList">
+          <li><strong>Operator Inquiry</strong> — for qualified individuals seeking to license SSAG systems</li>
+          <li><strong>Investor Overview</strong> — for capital partners evaluating enterprise ownership</li>
+          <li><strong>Strategic Partnerships</strong> — for aligned organizations and expansion opportunities</li>
+        </ul>
+
+        <div class="ctaRow" style="margin-top:16px;">
+          <!-- Replace these links with your actual Google Form / Typeform / email link when ready -->
+          <a class="btn btnPrimary" href="mailto:cezarmorris2021@gmail.com?subject=SSAG%20Operator%20Inquiry">Operator Inquiry</a>
+          <a class="btn btnGhost" href="mailto:cezarmorris2021@gmail.com?subject=SSAG%20Investor%20Overview">Investor Overview</a>
+          <a class="btn btnGhost" href="mailto:cezarmorris2021@gmail.com?subject=SSAG%20Strategic%20Partnership">Strategic Partnership</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;">
+      <div>
+        <strong>Apply to SSAG</strong> © SSAG — Stealth Systems Automation Group
+      </div>
+      <div class="muted">
+        SSAG retains ownership of all systems, documentation, and IP. Licensing does not transfer ownership.
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
